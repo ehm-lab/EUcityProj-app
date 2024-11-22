@@ -4,6 +4,5 @@
 inst/extdata/*
 
 # but keep folder
-!inst/extdata
 !inst/extdata/.gitkeepdir
 
