@@ -112,6 +112,7 @@ region_period <- read_parquet(pqfs$region_period)
 
 # somehow i can only manage to delete the files, leaving an empty dir
 unlink(x=paste0(getwd(),"/results_parquet"), recursive=TRUE)
+file.remove(dir("results_parquet", full.names = T))
 
 # PROCESS
 ci_le <- prep_app_data(city_level, "city")
