@@ -1,7 +1,7 @@
 .Rproj.user
 
 # exclude big app data
-# inst/extdata/*
+inst/extdata/*
 
 # but keep folder
-# !inst/extdata/.gitkeepdir
+!inst/extdata/.gitkeepdir.txt
