@@ -31,30 +31,26 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
 
       maplibre(style = carto_style("voyager"),
                center = c(11,48), # or the other way around
-               zoom = 3) |>
+               zoom = 3) #|>
         # can add_line_layer() for some outline layers controllable by map button before_id="building"
-        add_layers_control(position = "bottom-left", layers=NULL, collapsible = TRUE)
+        # add_layers_control(position = "bottom-left", layers=NULL, collapsible = TRUE)
 
     })
 
   observe({
 
-    req(nrow(mapdata()) > 0)
-    # cannot get the detailed warning to work
-    # , {
-    #   showModal(
-    #     modalDialog(
-    #       title="No data",
-    #       "Projected values for this scenario were not calculated, please make a different selection and explore the 'Impossible scenarios' section in the Help tab.", easyClose=TRUE, footer = NULL)
-    #     )
-    #   return()
-    # })
+    # CHECK DATA
+    if(nrow(mapdata())==0){
+        showModal(
+          modalDialog(
+            title="No data",
+            "Projected values for this scenario were not calculated, please make a different selection and explore the 'Impossible scenarios' section in the Help tab.", easyClose=TRUE, footer = NULL)
+          )
+      return()
+    }
 
-    # all the colours and palette etc
     # RETRIEVE DATA
     md <- mapdata()
-
-
 
     vnames <- c("est", "low", "high")
     suffixes <- paste0("_",vnames)

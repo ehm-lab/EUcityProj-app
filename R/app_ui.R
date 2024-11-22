@@ -28,7 +28,7 @@ app_ui <- function(request) {
     # Your application UI logic
     page_fillable(
     gap="5px",
-    card("Health impact projection update", padding=c(0), fill = FALSE,
+    card("Multi-level projections of temperature related mortality under varying climate, adaptation and social development scenarios", padding=c(0), fill = FALSE,
          height="60px", min_height="60px",max_height="60px"),
     navset_card_underline(
       nav_panel(
