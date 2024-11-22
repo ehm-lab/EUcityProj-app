@@ -4,7 +4,3 @@
 inst/extdata/city_*
 inst/extdata/country_*
 inst/extdata/region_*
-
-# but keep folder
-# !inst/extdata/.gitkeepdir
-
