@@ -11,11 +11,11 @@ mod_map_inputs_ui <- function(id) {
   ns <- NS(id)
 
     card( padding="50px",
-      selectizeInput(ns("lev_per"), "View by:", choices = c("Warming level","Five-year periods")),
-      selectizeInput(ns("area"), label=NULL, choices = c("City","Country","Region")),
+      selectizeInput(ns("lev_per"), "View by:", choices = c("Warming level","Five-year periods"), selected="Warming level"),
+      selectizeInput(ns("area"), label=NULL, choices = c("City","Country","Region"), selected="City"),
       conditionalPanel(
         condition = sprintf("input['%s'] == 'Five-year periods'", ns("lev_per")),
-        sliderTextInput(ns("period"),"Period",choices=period_ov,animate = TRUE, grid = TRUE)
+        sliderTextInput(ns("period"),"Period",choices=period_ov,selected=period_ov[1],animate = TRUE, grid = TRUE)
         ),
       conditionalPanel(
         condition = sprintf("input['%s'] == 'Warming level'", ns("lev_per")),
@@ -30,9 +30,9 @@ mod_map_inputs_ui <- function(id) {
           selectizeInput(ns("agegroup"),"Age group:", agegroup_ov,  selected="all"),
           selectizeInput(ns("outc"),"Outcome:", outcomes_ov, selected="cuman")),
         accordion_panel(title="Scenarios",
-          sliderTextInput(ns("adapt"),"Adaptation:", adapt_ov),
+          sliderTextInput(ns("adapt"),"Adaptation:", adapt_ov, selected="0%"),
           radioGroupButtons(ns("ssp"),"SSP:",ssp_ov, ssp_ov[2], size = "xs",justified = F),
-          radioGroupButtons(ns("sc"),"Component:",sc_ov, sc_ov[2], size = "xs",justified = FALSE)
+          radioGroupButtons(ns("sc"),"Component:",sc_ov, sc_ov[2], size = "xs",justified = F)
         ),
         conditionalPanel(
           condition = sprintf("input['%s'] != 'City'", ns("area")),
@@ -48,6 +48,7 @@ mod_map_inputs_ui <- function(id) {
 mod_map_inputs_server <- function(id){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
+
     # ALLOW SLIDER TEXT INPUT NAMED CHOICES
     rw_level <- allow_named_choices(
       inputId = "level", #id of widget to extend
@@ -57,6 +58,18 @@ mod_map_inputs_server <- function(id){
       init_choices  = level_ov,   #named choices, not only names
       init_selected = level_ov[1] #named select , not only name
     )
+
+    # Default values for inputs
+    observe({
+      updateSelectizeInput(session, "lev_per", selected = "Warming level")
+      updateSelectizeInput(session, "area", selected = "City")
+      updateSliderTextInput(session, "level", selected = names(level_ov)[1])
+      updateRadioGroupButtons(session, "range", selected = range_ov[2])
+      updateSelectizeInput(session, "agegroup", selected = "all")
+      updateRadioGroupButtons(session, "ssp", selected = ssp_ov[1])
+      updateRadioGroupButtons(session, "sc", selected = sc_ov[3])
+      updateSelectizeInput(session, "outc", selected = "cuman")
+    })
 
     # OUTPUTS
     return(

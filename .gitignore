@@ -1,4 +1,6 @@
 .Rproj.user
+.Rhistory
+*.Rhistory
 
 # exclude big app data
 inst/extdata/city_*

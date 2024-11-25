@@ -48,10 +48,10 @@ mod_table_server <- function(id){
 
     tbdata <- reactive({
 
-      ordered_newnames <- c("Level"="level","Period"="period","Adaptation"="adapt","Temp.Range"="range",
-                            "SSP"="ssp","Sc"="sc","Age group"="agegroup",
-                            "Country code"="country_code", "Country"="country_name",
-                            "City"="city_name","City code"="city", "Region"="region",
+      ordered_newnames <- c("Level"="level","Period"="period","Adaptation"="adapt","Temp.range"="range",
+                            "SSP"="ssp","Sc"="sc","Age.group"="agegroup",
+                            "Country.code"="country_code", "Country"="country_name",
+                            "City"="city_name","City.code"="city", "Region"="region",
                             "AN"="an_est","AF(%)"="af_est","Rate(*10^6)"="rate_est","Cumulative"="cuman_est",
                             setNames(
                               paste0(rep(c("an","af","rate","cuman"), each=2),c("_low","_high")),
@@ -63,19 +63,23 @@ mod_table_server <- function(id){
         # SHOWING 1% OF DATA !
         slice_sample(prop=0.1) %>%
         sfarrow::read_sf_dataset() %>% st_drop_geometry(.)  %>%
-        select(any_of(ordered_newnames)) %>% mutate(across(where(is.numeric),\(x) round(x, 2)))
+        select(any_of(ordered_newnames)) %>%
+        mutate(across(where(is.numeric),\(x) round(x, 2))) %>%
+        mutate(across(any_of(c("Age.group","Country", "City")),as.factor))
 
       return(dt)
 
       })
+
 
     output$table <- renderDT({
 
       waitress$start()
 
       col_names <- colnames(tbdata())
+
       hidden_cols <- which(
-        col_names %in% c("Country code","City code","AN","AF(%)","Rate(*10^6)",
+        col_names %in% c("Country.code","City.code","AN","AF(%)","Rate(*10^6)",
                          paste0(rep(c("AN","AF","Rate"), each=2),c("_low","_high")))
         ) - 1 # Convert to 0-index
 

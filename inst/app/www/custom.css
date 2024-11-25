@@ -5,7 +5,7 @@
 #controls .card {
   background-color: rgba(255, 255, 255, 0.9); /* more translucent white */
   padding: 12px;
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 #controls .card-body {
@@ -14,22 +14,22 @@
 
 #controls .selectize-input {
   background-color: rgba(255, 255, 255, 0);
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 
 #controls .selectize-dropdown {
     background-color: rgba(255, 255, 255, 1);
-    font-size: 0.7em;
+    font-size: 0.8em;
 
 }
 
 #controls .shiny-input-container {
   background-color: rgba(255, 255, 255, 0);
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 #controls .control-label {
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: bold;
 }
 

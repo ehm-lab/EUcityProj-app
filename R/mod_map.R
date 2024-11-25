@@ -29,8 +29,8 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
 
     output$bmap <- renderMaplibre({
 
-      maplibre(style = carto_style("voyager"),
-               center = c(11,48), # or the other way around
+      maplibre(style = carto_style("dark-matter"), # "voyager"  #  #"positron"
+               center = c(11,48),
                zoom = 3) #|>
         # can add_line_layer() for some outline layers controllable by map button before_id="building"
         # add_layers_control(position = "bottom-left", layers=NULL, collapsible = TRUE)
@@ -136,6 +136,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
                          source=md,
                          before_id = "building",
                          tooltip="hover",popup="popup",
+                         circle_radius = 6,
                          circle_color=step_expr(
                            column = vlabcols$est,
                            base = pal[1],
