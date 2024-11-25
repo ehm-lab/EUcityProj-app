@@ -77,7 +77,7 @@ mod_map_inputs_server <- function(id){
         area = reactive(input$area),
         lev_per = reactive(input$lev_per),
         period = reactive(input$period),
-        level = rw_level$read, # reactive(input$level)
+        level = rw_level$read,
         range = reactive(input$range),
         adapt = reactive(input$adapt),
         agegroup = reactive(input$agegroup),

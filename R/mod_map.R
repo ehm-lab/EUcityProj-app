@@ -39,14 +39,13 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
 
   observe({
 
-    # CHECK DATA
-    if(nrow(mapdata())==0){
+    if(nrow(mapdata()) == 0) {
         showModal(
           modalDialog(
             title="No data",
             "Projected values for this scenario were not calculated, please make a different selection and explore the 'Impossible scenarios' section in the Help tab.", easyClose=TRUE, footer = NULL)
           )
-      return()
+        return()
     }
 
     # RETRIEVE DATA
