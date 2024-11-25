@@ -43,7 +43,7 @@ mod_table_server <- function(id){
     inputs_table <- mod_table_inputs_server("table_inp")
 
     output$tb_usage <- renderText({
-      "The data in the table can be filtered, sorted, and downloaded with the column boxes, the diamonds next to the variables names and the CSV button. Some columns are hidden on start, they can be revealed with the Column visibility button."
+      "Table data can be filtered, sorted, hidden and downloaded using: the column boxes, the diamonds next to the column names and the visibility and CSV buttons."
     })
 
     tbdata <- reactive({
@@ -52,15 +52,18 @@ mod_table_server <- function(id){
                             "SSP"="ssp","Sc"="sc","Age group"="agegroup",
                             "Country code"="country_code", "Country"="country_name",
                             "City"="city_name","City code"="city", "Region"="region",
-                            "an"="an_est","af"="af_est","rate"="rate_est","cuman"="cuman_est",
-                            paste0(rep(c("an","af","rate","cuman"), each=2),c("_low","_high")))
+                            "AN"="an_est","AF(%)"="af_est","Rate(*10^6)"="rate_est","Cumulative"="cuman_est",
+                            setNames(
+                              paste0(rep(c("an","af","rate","cuman"), each=2),c("_low","_high")),
+                              paste0(rep(c("AN","AF","Rate","Cumulative"), each=2),c("_low","_high"))
+                              ))
 
       dt <-
         utils_connect_arrow(lev_per=inputs_table$lev_per(), area=inputs_table$area()) %>%
-        # SHOWING 1% OF DATA
+        # SHOWING 1% OF DATA !
         slice_sample(prop=0.1) %>%
         sfarrow::read_sf_dataset() %>% st_drop_geometry(.)  %>%
-        select(any_of(ordered_newnames)) %>% mutate(across(where(is.numeric),\(x) round(x, 4)))
+        select(any_of(ordered_newnames)) %>% mutate(across(where(is.numeric),\(x) round(x, 2)))
 
       return(dt)
 
@@ -72,8 +75,8 @@ mod_table_server <- function(id){
 
       col_names <- colnames(tbdata())
       hidden_cols <- which(
-        col_names %in% c("Country code","City code","an","af","rate",
-                         paste0(rep(c("an","af","rate"), each=2),c("_low","_high")))
+        col_names %in% c("Country code","City code","AN","AF(%)","Rate(*10^6)",
+                         paste0(rep(c("AN","AF","Rate"), each=2),c("_low","_high")))
         ) - 1 # Convert to 0-index
 
       dtt <-  datatable(tbdata(),

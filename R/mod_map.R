@@ -31,15 +31,13 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
 
       maplibre(style = carto_style("voyager"),
                center = c(11,48), # or the other way around
-               zoom = 3) |>
+               zoom = 3) #|>
         # can add_line_layer() for some outline layers controllable by map button before_id="building"
-        add_layers_control(position = "bottom-left", layers=NULL, collapsible = TRUE)
+        # add_layers_control(position = "bottom-left", layers=NULL, collapsible = TRUE)
 
     })
 
   observe({
-
-    #req(nrow(mapdata()) > 0)
 
     if(nrow(mapdata()) == 0) {
         showModal(
@@ -50,11 +48,8 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
         return()
     }
 
-    # all the colours and palette etc
     # RETRIEVE DATA
     md <- mapdata()
-
-
 
     vnames <- c("est", "low", "high")
     suffixes <- paste0("_",vnames)

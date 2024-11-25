@@ -21,19 +21,23 @@ mod_map_inputs_ui <- function(id) {
         condition = sprintf("input['%s'] == 'Warming level'", ns("lev_per")),
         sliderTextInput(ns("level"),"Warming level",choices=names(level_ov),selected=names(level_ov)[1])
       ),
-      radioGroupButtons(ns("range"),"Temperature effect:",range_ov, range_ov[2], size = "xs",justified = TRUE),
 
-      sliderTextInput(ns("adapt"),"Adaptation:", adapt_ov),
-
-      radioGroupButtons(ns("ssp"),"SSP:",ssp_ov, ssp_ov[2], size = "xs",justified = TRUE),
-
-      radioGroupButtons(ns("sc"),"Projection component:",sc_ov, sc_ov[2], size = "xs",justified = TRUE),
-
-      selectizeInput(ns("agegroup"),"Age group:", agegroup_ov,  selected="all"),
-      selectizeInput(ns("outc"),"Outcome:", outcomes_ov, selected="cuman"),
-      conditionalPanel(
-        condition = sprintf("input['%s'] != 'City'", ns("area")),
-        sliderInput(ns("opacity"), "Fill Opacity", min = 0, max = 1, value = 0.7, ticks=F, step = 0.1)
+      # accordion attempt
+      accordion(
+        open = F, multiple = F,
+        accordion_panel(title="Temperature effect, age group, outcome summary",
+          radioGroupButtons(ns("range"),"Effect of:",range_ov, range_ov[2], size = "xs",justified = F),
+          selectizeInput(ns("agegroup"),"Age group:", agegroup_ov,  selected="all"),
+          selectizeInput(ns("outc"),"Outcome:", outcomes_ov, selected="cuman")),
+        accordion_panel(title="Scenarios",
+          sliderTextInput(ns("adapt"),"Adaptation:", adapt_ov),
+          radioGroupButtons(ns("ssp"),"SSP:",ssp_ov, ssp_ov[2], size = "xs",justified = F),
+          radioGroupButtons(ns("sc"),"Component:",sc_ov, sc_ov[2], size = "xs",justified = FALSE)
+        ),
+        conditionalPanel(
+          condition = sprintf("input['%s'] != 'City'", ns("area")),
+          sliderInput(ns("opacity"), "Fill Opacity", min = 0, max = 1, value = 0.7, ticks=F, step = 0.1)
+        )
       )
   )
 }
