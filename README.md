@@ -6,13 +6,12 @@ When inst/extdata has the city_ country_ region_ folders run with:
 
 `golem::document_and_reload(); run_app()`
 
+To add ?  
 
 - help page
 - research page/ glossary
 
 
-- ...  
-
+To fix 
 
 - control inputs sizing / label visibility
-- on start display (?)
