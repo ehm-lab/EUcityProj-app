@@ -9,7 +9,6 @@
 #' @importFrom shiny NS tagList
 mod_table_ui <- function(id) {
   ns <- NS(id)
-  useWaitress(color="lightblue", percent_color = "black")
     fluidRow(
       column(width = 2,
         card(
@@ -25,9 +24,10 @@ mod_table_ui <- function(id) {
           title = NULL,
           div(
             style="height: calc(100vh - 280px); overflow-y: auto;", # Adjust height as needed
-          DTOutput(ns("table"))
-        )
-          )))
+            shinycssloaders::withSpinner(
+              DTOutput(ns("table")))
+            ))
+        ))
 }
 
 #' table Server Functions
@@ -36,8 +36,6 @@ mod_table_ui <- function(id) {
 mod_table_server <- function(id){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
-
-    waitress <- Waitress$new(theme = "overlay-percent", infinite=TRUE)
 
     # period level and spatial resol, can add more
     inputs_table <- mod_table_inputs_server("table_inp")
@@ -61,7 +59,7 @@ mod_table_server <- function(id){
       dt <-
         utils_connect_arrow(lev_per=inputs_table$lev_per(), area=inputs_table$area()) %>%
         # SHOWING 1% OF DATA !
-        slice_sample(prop=0.1) %>%
+        slice_sample(prop=0.5) %>%
         sfarrow::read_sf_dataset() %>% st_drop_geometry(.)  %>%
         select(any_of(ordered_newnames)) %>%
         mutate(across(where(is.numeric),\(x) round(x, 2))) %>%
@@ -74,7 +72,6 @@ mod_table_server <- function(id){
 
     output$table <- renderDT({
 
-      waitress$start()
 
       col_names <- colnames(tbdata())
 
@@ -91,13 +88,12 @@ mod_table_server <- function(id){
                   options = list(
                     pageLength = 50,
                     lengthMenu = c(50,100,200,500),
-                    # initComplete = JS(
-                    #   "function(settings, json) {",
-                    #   "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
-                    #   "}"),
                     autoWidth = TRUE, # automatically adjust column width
                     dom = 'Bfrtip',      # simplify table controls
-                    buttons = c('csv','colvis'),
+                    buttons = list(
+                      list(extend='csv', text="Save table rows as .CSV",
+                           filename=paste(inputs_table$lev_per(), inputs_table$area(),sep="_")),
+                      list(extend='colvis', text="Show/Hide columns")),
                     columnDefs = list(
                       list(className = 'dt-center', targets = "_all"), # center align
                       list(visible = FALSE, targets = hidden_cols)
@@ -110,8 +106,6 @@ mod_table_server <- function(id){
             columns = colnames(tbdata()),
             fontSize = '12px'
           )
-
-        waitress$close()
 
         dtt
 

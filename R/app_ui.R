@@ -33,17 +33,7 @@ app_ui <- function(request) {
     navset_card_underline(
       nav_panel(
         title="Map",
-        mod_map_ui("bmap"),
-        jqui_resizable(
-          absolutePanel(
-                        id = "controls", class = "float-panel",
-                        fixed = TRUE, draggable = TRUE,
-                        # for reproducible positioning 2/3 specified
-                        top = "28%", bottom = "auto", height = 300,
-                        left = 65, right = "auto",  width = 420,
-                        mod_map_inputs_ui("inpbmap")
-          )
-        )
+        mod_map_ui("bmap")
       ),
       nav_panel(title="Table",mod_table_ui("table")),
       nav_panel(title="Research"),

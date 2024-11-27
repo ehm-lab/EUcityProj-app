@@ -12,10 +12,16 @@ mod_map_ui <- function(id) {
   card(
     height = 500, full_screen = FALSE,
     card_header(uiOutput(ns("scenariolabel"))),
-    card_body(
-      class = "p-0", # removes padding
-      shinycssloaders::withSpinner(
-        maplibreOutput(ns("bmap"), height = "75vh"), type=4)
+    layout_column_wrap(width = NULL, style = css(grid_template_columns = "1fr 3fr", grid_column_gap= "5px"),
+      card_body(
+        class = "p-0", # removes padding
+        mod_map_inputs_ui("inpbmap")
+      ),
+      card_body(
+        class = "p-0", # removes padding
+        shinycssloaders::withSpinner(
+          maplibreOutput(ns("bmap"), height = "75vh"), type=4)
+      )
     )
   )
 }
@@ -30,10 +36,8 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
     output$bmap <- renderMaplibre({
 
       maplibre(style = carto_style("dark-matter"), # "voyager"  #  #"positron"
-               center = c(11,48),
-               zoom = 3) #|>
-        # can add_line_layer() for some outline layers controllable by map button before_id="building"
-        # add_layers_control(position = "bottom-left", layers=NULL, collapsible = TRUE)
+               center = c(10,47),
+               zoom = 4)
 
     })
 
@@ -43,7 +47,8 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
         showModal(
           modalDialog(
             title="No data",
-            "Projected values for this scenario were not calculated, please make a different selection and explore the 'Impossible scenarios' section in the Help tab.", easyClose=TRUE, footer = NULL)
+            "Projected values for this scenario were not calculated, please make a different selection or explore the 'Impossible scenarios' section in the Help tab.
+            Hint: The SSP puts hard limits on the warming level reached", easyClose=TRUE, footer = NULL)
           )
         return()
     }

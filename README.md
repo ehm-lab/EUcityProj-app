@@ -14,4 +14,5 @@ To add ?
 
 To fix 
 
-- control inputs sizing / label visibility
+- scenario label
+- shorter/more even column names (table tab)

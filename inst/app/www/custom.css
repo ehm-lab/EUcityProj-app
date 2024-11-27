@@ -1,73 +1,16 @@
-#controls {
-  background-color: rgba(255, 255, 255, 0); /* more translucent white */
-}
-
-#controls .card {
-  background-color: rgba(255, 255, 255, 0.9); /* more translucent white */
-  padding: 12px;
-  font-size: 0.8em;
-}
-
-#controls .card-body {
-  background-color: rgba(255, 255, 255, 0); /* more translucent white */
-}
-
-#controls .selectize-input {
-  background-color: rgba(255, 255, 255, 0);
-  font-size: 0.8em;
-}
-
-#controls .selectize-dropdown {
-    background-color: rgba(255, 255, 255, 1);
-    font-size: 0.8em;
-
-}
-
-#controls .shiny-input-container {
-  background-color: rgba(255, 255, 255, 0);
-  font-size: 1em;
-}
-
-#controls .control-label {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-#controls .bslib-gap-spacing {
-    row-gap: 3px;
-}
-
-/* these next few styles might be removed */
-.ui-resizable-handle .ui-resizable-s .ui-resizable-e {
-    display: none;
-}
-
-.ui-resizable-se {
-    display: block;
-    position: absolute;
-    cursor: ne-resize;
-    top: 0;
-    right: 0;
-}
-
-.ui-icon {
-  width: 20px;
-  height: 20px;
-  background-image: url(img/ui-icons_444444_256x240.png);
-}
-
-.ui-icon-gripsmall-diagonal-se {
-  background-position: -16px -16px;
-  /*background-position-x: -64px;*/
-  /*background-position-y: -224px;*/
-}
-
 .mapboxgl-legend, .top-right > * {
   background-color: rgba(255,255,255,1.0) !important;
 }
 
+.btn, .btn-outline-primary, .radiobtn {
+  padding: 0px;
+}
 
+.irs {
+  width: 100%;
+}
 
-
-
+#DataTables_Table_0_wrapper > div.dt-buttons.btn-group.flex-wrap > div {
+  margin-left: 5px;
+}
 
