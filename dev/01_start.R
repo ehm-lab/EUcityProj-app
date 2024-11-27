@@ -20,15 +20,22 @@
 ##
 golem::fill_desc(
   pkg_name = "ehmhipmapp", # The name of the golem package containing the app (typically lowercase, no underscore or periods)
-  pkg_title = "PKG_TITLE", # What the Package Does (One Line, Title Case, No Period)
-  pkg_description = "PKG_DESC.", # What the package does (one paragraph).
-  authors = person(
-    given = "AUTHOR_FIRST", # Your First Name
-    family = "AUTHOR_LAST", # Your Last Name
-    email = "AUTHOR@MAIL.COM", # Your email
-    role = c("aut", "cre") # Your role (here author/creator)
-  ),
-  repo_url = NULL, # The URL of the GitHub repo (optional),
+  pkg_title = "Temperature Effects Health Impact Projection Scenario Viewer", # What the Package Does (One Line, Title Case, No Period)
+  pkg_description = "A one paragraph description of the purpose of the package.", # What the package does (one paragraph).
+  authors =
+    c(person(
+      given = "Arturo", # Your First Name
+      family = "de la Cruz Libardi", # Your Last Name
+      role = c("aut", "cre"), # Your role (here author/creator)
+      comment = c(ORCID = "0009-0001-1543-7999")
+    ),
+  person(
+    given="Pierre",
+    family="Masselot",
+    role = c("aut","dtc"),
+    comment = c(ORCID = "0000-0002-7326-1290")
+  )),
+  repo_url = "https://github.com/ehm-lab/hipmappNM", # The URL of the GitHub repo (optional),
   pkg_version = "0.0.0.9000", # The version of the package containing the app
   set_options = TRUE # Set the global golem options
 )
