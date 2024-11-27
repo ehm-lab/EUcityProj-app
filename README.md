@@ -12,7 +12,8 @@ To add ?
 - research page/ glossary
 
 
-To fix 
+To check 
 
 - scenario label
 - shorter/more even column names (table tab)
+- overall package/app setting with dev scripts (authors, url)
