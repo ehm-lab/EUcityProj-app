@@ -10,7 +10,6 @@
 mod_map_inputs_ui <- function(id) {
   ns <- NS(id)
 
-    card( padding="50px",
       accordion(open = NULL, multiple = F,
         accordion_panel("View by:",
           radioGroupButtons(ns("lev_per"), NULL, choices = c("Warming level","Five-year periods"), selected="Warming level", justified = T),
@@ -39,7 +38,6 @@ mod_map_inputs_ui <- function(id) {
           sliderInput(ns("opacity"), "Fill Opacity", min = 0, max = 1, value = 0.7, ticks=F, step = 0.1)
         )
       )
-  )
 }
 
 #' map_inputs Server Functions
