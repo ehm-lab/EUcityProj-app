@@ -16,7 +16,8 @@ To fix/check
 - scenario label (Component: to Including:, both(?))
 - shorter/more even column names (table tab)
 - Attributable number to Excess deaths
-- Shoft colour scale towards more intense to prevent cities being invisible with light background
+- Shift colour scale towards more intense to prevent cities being invisible with light background
+- REverse direction of total scale, lighter better darker worse
 - No data text, hide markers when no data
 - Cities in local languages vs cities in english
 - Input filtering for table taken from mod_map_inputs
