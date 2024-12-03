@@ -9,6 +9,8 @@ When inst/extdata has the city_ country_ region_ folders run with:
 To add ?  
 
 - help page
+  - Scenario/Component toggle
+  - Map clicks to see values
 - research page/glossary
 
 To fix/check
