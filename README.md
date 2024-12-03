@@ -9,10 +9,15 @@ When inst/extdata has the city_ country_ region_ folders run with:
 To add ?  
 
 - help page
-- research page/ glossary
+- research page/glossary
 
+To fix/check
 
-To check 
-
-- scenario label
+- scenario label (Component: to Including:, both(?))
 - shorter/more even column names (table tab)
+- Attributable number to Excess deaths
+- Shoft colour scale towards more intense to prevent cities being invisible with light background
+- No data text, hide markers when no data
+- Cities in local languages vs cities in english
+- Input filtering for table taken from mod_map_inputs
+- "In development" warning
