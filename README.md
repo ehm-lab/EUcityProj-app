@@ -9,12 +9,20 @@ When inst/extdata has the city_ country_ region_ folders run with:
 To add ?  
 
 - help page
-- research page/ glossary
+  - Scenario/Component toggle
+  - Map clicks to see values
+- research page/glossary
 
+To fix/check
 
-To check 
-
-- scenario label
+- scenario label (Component: to Including:, both(?))
 - shorter/more even column names (table tab)
+- Attributable number to Excess deaths
+- Shift colour scale towards more intense to prevent cities being invisible with light background
+- REverse direction of total scale, lighter better darker worse
+- No data text, hide markers when no data
+- Cities in local languages vs cities in english
+- Input filtering for table taken from mod_map_inputs
+- "In development" warning
 - colour scale and legend, set static for full data range, this would mean we see the change through time well
 - carry over inputs for table filter from map inputs, maybe even fill in the datatable boxes...
