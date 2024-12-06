@@ -58,8 +58,8 @@ mod_table_server <- function(id){
 
       dt <-
         utils_connect_arrow(lev_per=inputs_table$lev_per(), area=inputs_table$area()) %>%
-        # SHOWING 1% OF DATA !
-        slice_sample(prop=0.5) %>%
+        # SHOWING 10% OF DATA !
+        slice_sample(prop=0.1) %>%
         sfarrow::read_sf_dataset() %>% st_drop_geometry(.)  %>%
         select(any_of(ordered_newnames)) %>%
         mutate(across(where(is.numeric),\(x) round(x, 2))) %>%

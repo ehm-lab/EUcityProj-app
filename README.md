@@ -16,3 +16,5 @@ To check
 
 - scenario label
 - shorter/more even column names (table tab)
+- colour scale and legend, set static for full data range, this would mean we see the change through time well
+- carry over inputs for table filter from map inputs, maybe even fill in the datatable boxes...

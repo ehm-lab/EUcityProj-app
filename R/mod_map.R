@@ -35,7 +35,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
 
     output$bmap <- renderMaplibre({
 
-      maplibre(style = carto_style("dark-matter"), # "voyager"  #  #"positron"
+      maplibre(style = carto_style("voyager" ),#"dark-matter"), # "voyager"  #  #"positron"
                center = c(10,47),
                zoom = 4)
 
