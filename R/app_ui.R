@@ -28,14 +28,17 @@ app_ui <- function(request) {
     # Your application UI logic
     page_fillable(
     gap="5px",
-    card("Multi-level projections of temperature related mortality under varying climate, adaptation and social development scenarios", padding=c(0), fill = FALSE,
+    card("IN-DEVELOPMENT ! - banner title tbd", padding=c(0), fill = FALSE,
          height="60px", min_height="60px",max_height="60px"),
     navset_card_underline(
       nav_panel(
         title="Map",
         mod_map_ui("bmap")
-      ),
-      nav_panel(title="Table",mod_table_ui("table")),
+        ),
+      nav_panel(
+        title="Table",
+        mod_table_ui("table")
+        ),
       nav_panel(title="Research"),
       nav_panel(title="Help"),
       nav_spacer(),
