@@ -30,8 +30,8 @@ mod_map_inputs_ui <- function(id) {
           sliderTextInput(ns("adapt"),"Adaptation:", adapt_ov, selected="0%"),
           radioGroupButtons(ns("ssp"),"SSP:",ssp_ov, ssp_ov[2], size = "xs",justified = T),
         tagAppendAttributes(
-          radioGroupButtons(ns("sc"),"Component:",sc_ov, sc_ov[2], size = "xs",justified = T),
-        id="sc_component")
+          radioGroupButtons(ns("sc"),"Including:",sc_ov, sc_ov[2], size = "xs",justified = T),
+        id="sc_including")
         ),
         conditionalPanel(
           condition = sprintf("input['%s'] != 'City'", ns("area")),

@@ -16,12 +16,16 @@ To add ?
 To fix/check
 
 - scenario label (Component: to Including:, both(?))
+-> now "Including" and "Both"  labels
 - shorter/more even column names (table tab)
 - Attributable number to Excess deaths
 - Shift colour scale towards more intense to prevent cities being invisible with light background
-- REverse direction of total scale, lighter better darker worse
+-> instead added circle outlines
+- Reverse direction of total scale, lighter better darker worse
+-> rev(pal)
 - No data text, hide markers when no data
-- Cities in local languages vs cities in english
+- Cities in local languages vs cities in English
+-> changes some cities to english, non-manual lookup for this difficult to find
 - Input filtering for table taken from mod_map_inputs
 - "In development" warning
 - colour scale and legend, set static for full data range, this would mean we see the change through time well

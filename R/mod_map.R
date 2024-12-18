@@ -44,6 +44,14 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
   observe({
 
     if(nrow(mapdata()) == 0) {
+
+      # clear colors as simpole change to show that there is no data?
+
+      # maplibre_proxy("bmap") |>
+      #   # layer_id, js-modify, object
+      #   set_paint_property("fill_polys", "fill-opacity", 0) |>
+      #   set_paint_property("fill_circs","circle-color",0)
+
         showModal(
           modalDialog(
             title="No data",
@@ -63,7 +71,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
     vlabcols <- switch(outc(),
                      "cuman" = c(list(leg_title = "<b>Cumulative excess deaths</b>"),
                                  setNames(paste0("cuman", suffixes), vnames)),
-                     "an" = c(list(leg_title = "<b>Attributable number</b>"),
+                     "an" = c(list(leg_title = "<b>Excess deaths</b>"),
                               setNames(paste0("an", suffixes), vnames)),
                      "af" = c(list(leg_title = "<b>Attributable fraction (%)</b>"),
                               setNames(paste0("af", suffixes), vnames)),
@@ -82,7 +90,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
       pal <- RColorBrewer::brewer.pal(5,"PuBu")
     } else if (any(md[["range"]] %in% c("tot"))) {
       #pal <- RColorBrewer::brewer.pal(5,"GrPu")
-      pal <- scico::scico(5, palette = "tokyo")
+      pal <- rev(scico::scico(5, palette = "tokyo"))
     }
 
     # LEGEND LABELS
@@ -141,6 +149,9 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
                          before_id = "building",
                          tooltip="hover",popup="popup",
                          circle_radius = 6,
+                         circle_stroke_color = "black",
+                         circle_stroke_opacity = .6,
+                         circle_stroke_width = .8,
                          circle_color=step_expr(
                            column = vlabcols$est,
                            base = pal[1],
