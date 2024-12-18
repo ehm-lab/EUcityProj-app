@@ -42,11 +42,18 @@ disp_names <- read.csv("V:/VolumeQ/AGteam/Eurostat/lookup/URAU_NUTS_2021.csv") %
   distinct(.)
 disp_names[disp_names$city_code=="EL001C","city_name"] <- "Athina"
 
+# add some english names
+engnames <- read.csv("V:/VolumeQ/AGteam/Eurostat/lookup/URAU_DisplayNames.csv") %>%
+  select(city_code=URAU_CODE, city_name=LABEL) %>% filter(!grepl("F$",city_code)) %>%
+  mutate(country_code=substr(city_code,1,2))
+disp_names[disp_names$city_code%in%engnames$city_code,] <- engnames
+
 cntr_names <-  gisco_countries %>%
   dplyr::select(country_code=CNTR_ID, country_name=NAME_ENGL) %>%
   st_drop_geometry(.);
 
 lookup <- left_join(disp_names,cntr_names)
+lookup[lookup$city_code=="ES069C","city_name"] <- "Castellón de la Plana"
 rm(disp_names,cntr_names)
 
 # 3. define function for joining parquet to geoms and pre-process
@@ -122,23 +129,23 @@ co_pe <- prep_app_data(country_period, "ctry")
 re_le <- prep_app_data(region_level, "rg")
 re_pe <- prep_app_data(region_period, "rg")
 
-# ## MAKE OPTIONS VECTORS - no need to rerun - sysdata.RDS loads all and is in git
-# level_ov <- levels(ci_le$level); names(level_ov) <- paste0(level_ov, "℃")
-# period_ov <- levels(co_pe$period);
-# adapt_ov <- levels(ci_le$adapt)
-# range_ov <- levels(co_pe$range); names(range_ov) <- c("Cold","Heat","Total")
-# ssp_ov <- levels(co_pe$ssp); names(ssp_ov) <- paste("SSP",ssp_ov)
-# sc_ov <- levels(ci_le$sc); names(sc_ov) <- c("Climate change", "Demographic change", "Full projection")
-# agegroup_ov <- levels(co_pe$agegroup); names(agegroup_ov) <- agegroup_ov; names(agegroup_ov)[6] <- "All"
-# city_ov <- levels(ci_pe$city);
-# country_ov <- levels(co_pe$country)
-# region_ov <- levels(re_pe$region)
-# outcomes_ov <- gsub("_est","",grep("est", names(re_le), value = T)); names(outcomes_ov) <-
-#   c("Attributable number","Attributable fraction (%)", "Excess death rate (x10⁶)","Cumulative excess deaths")
-#
-# usethis::use_data(adapt_ov,agegroup_ov,city_ov, country_ov, level_ov, outcomes_ov,
-#                   period_ov, range_ov, region_ov, ssp_ov, sc_ov,
-#                   internal=TRUE, overwrite = TRUE)
+## MAKE OPTIONS VECTORS - no need to rerun - sysdata.RDS loads all and is in git
+level_ov <- levels(ci_le$level); names(level_ov) <- paste0(level_ov, "℃")
+period_ov <- levels(co_pe$period);
+adapt_ov <- levels(ci_le$adapt)
+range_ov <- levels(co_pe$range); names(range_ov) <- c("Cold","Heat","Total")
+ssp_ov <- levels(co_pe$ssp); names(ssp_ov) <- paste("SSP",ssp_ov)
+sc_ov <- levels(ci_le$sc); names(sc_ov) <- c("Climate change", "Demographic change", "Both")
+agegroup_ov <- levels(co_pe$agegroup); names(agegroup_ov) <- agegroup_ov; names(agegroup_ov)[6] <- "All"
+city_ov <- levels(ci_pe$city);
+country_ov <- levels(co_pe$country)
+region_ov <- levels(re_pe$region)
+outcomes_ov <- gsub("_est","",grep("est", names(re_le), value = T)); names(outcomes_ov) <-
+  c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10⁶)","Cumulative excess deaths")
+
+usethis::use_data(adapt_ov,agegroup_ov,city_ov, country_ov, level_ov, outcomes_ov,
+                  period_ov, range_ov, region_ov, ssp_ov, sc_ov,
+                  internal=TRUE, overwrite = TRUE)
 
 ## SAVE PARITTIONED PARQUET FILES - warning expected
 sfarrow::write_sf_dataset(ci_le,"inst/extdata/city_level",format="parquet", partitioning="agegroup")
