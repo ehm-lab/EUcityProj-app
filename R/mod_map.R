@@ -47,10 +47,11 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
 
       # clear colors as simpole change to show that there is no data?
 
-      # maplibre_proxy("bmap") |>
-      #   # layer_id, js-modify, object
-      #   set_paint_property("fill_polys", "fill-opacity", 0) |>
-      #   set_paint_property("fill_circs","circle-color",0)
+      maplibre_proxy("bmap") |>
+        # layer_id, js-modify, object
+        set_paint_property("fill_polys", "fill-opacity", 0) |>
+        set_paint_property("fill_circs","circle-opacity",0) |>
+        clear_legend()
 
         showModal(
           modalDialog(
@@ -173,7 +174,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
     maplibre_proxy("bmap") |>
       # layer_id, js-modify, object
       set_paint_property("fill_polys", "fill-opacity", opacity()) |>
-      set_paint_property("fill_circs","circle-color",opacity())
+      set_paint_property("fill_circs","circle-opacity",opacity())
   }) %>% bindEvent(opacity())
 
   output$scenariolabel <- renderUI({
