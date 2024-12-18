@@ -12,7 +12,7 @@ License: What license is it under?
 URL: https://github.com/ehm-lab/hipmappNM
 BugReports: https://github.com/ehm-lab/hipmappNM/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Imports: 
     arrow,
     bslib,
