@@ -65,7 +65,7 @@ golem_add_external_resources <- function() {
     favicon(),
     bundle_resources(
       path = app_sys("app/www"),
-      app_title = "ehmhipmapp"
+      app_title = "vistemphip"
     ),
     tags$link(rel = "stylesheet", type = "text/css", href = "custom.css") # add this line to include the CSS
     # add here other external resources

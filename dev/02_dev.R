@@ -54,7 +54,7 @@ usethis::use_test("app")
 # Documentation
 
 ## Vignette ----
-usethis::use_vignette("ehmhipmapp")
+usethis::use_vignette("vistemphip")
 devtools::build_vignettes()
 
 ## Code Coverage----
