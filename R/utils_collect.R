@@ -7,7 +7,7 @@
 #' @noRd
 utils_collect <- function(query) {
 
-  d <- sfarrow::read_sf_dataset(query) # %>% mutate(agegroup=as.factor(agegroup))
+  d <- sfarrow::read_sf_dataset(query)
 
   return(d)
 

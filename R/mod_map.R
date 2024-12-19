@@ -14,11 +14,11 @@ mod_map_ui <- function(id) {
     card_header(uiOutput(ns("scenariolabel"))),
     layout_column_wrap(width = NULL, style = css(grid_template_columns = "1fr 3fr", grid_column_gap= "5px"),
       card_body(
-        class = "p-0", # removes padding
+        class = "p-0",
         mod_map_inputs_ui("inpbmap")
       ),
       card_body(
-        class = "p-0", # removes padding
+        class = "p-0",
         shinycssloaders::withSpinner(
           maplibreOutput(ns("bmap"), height = "75vh"), type=4)
       )
@@ -36,16 +36,14 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
     output$bmap <- renderMaplibre({
 
       maplibre(style = carto_style("voyager" ),#"dark-matter"), # "voyager"  #  #"positron"
-               center = c(10,47),
-               zoom = 4)
+               center = c(10,49.7),
+               zoom = 3)
 
     })
 
   observe({
 
     if(nrow(mapdata()) == 0) {
-
-      # clear colors as simpole change to show that there is no data?
 
       maplibre_proxy("bmap") |>
         # layer_id, js-modify, object
@@ -56,8 +54,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
         showModal(
           modalDialog(
             title="No data",
-            "Projected values for this scenario were not calculated, please make a different selection or explore the 'Impossible scenarios' section in the Help tab.
-            Hint: The SSP puts hard limits on the warming level reached", easyClose=TRUE, footer = NULL)
+            "Projected values for this scenario are unavailable. Please try a different selection or check the Help and Research pages for more information.", easyClose=TRUE, footer = NULL)
           )
         return()
     }

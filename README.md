@@ -8,30 +8,28 @@ When inst/extdata has the city\_ country\_ region\_ folders run with:
 
 [**To add/fix/check**]{.underline}
 
-**Possibly not feasible**
+-   colour scale and legend, set static for full data range, this would mean we see the change through time well
 
--   colour scale and legend, set static for full data range, this would mean we see the change through time well\
--   Input filtering for table taken from mod_map_inputs (fill datatable filtering boxes): Altern. add same granularity of input for table than for map **-\>** first stage done: can load filtering terms on initialisation
+**Help with words and UI**
 
-**One big issue**
 
--   table loading time, to load the largest of the tables it takes at least 60 seconds, add loading bar?
-
-**Help with words**
-
--   Improve readability of "no data" text
--   Improve readability of dynamic scenario label
--   Improve readability of table usage
--   Add content in help page (e.g items and how to use the app practically)
-    -   Scenario/Component toggle
+-   Improve readability of dynamic scenario label text
+-   Add content in help page (how to use the app practically)
+    -   Scenario/Component toggles
     -   Map clicks to see values
--   Add content in research page (what do the terms mean)
-    -   glossary
+    -   ...
+-   Add content in research page (what is the research behind and the meaning of the numbers)
+    -   definitions
     -   links
     -   ...
+-   Table tab UI, column layout/row layout
 
 [**Fixed/Added/To check**]{.underline}
 
+-   Improve readability of "no data" text
+    - done
+-   Improve readability of table usage text
+    - done
 -   Label and dynamic scenario label(Component: to Including:, both(?))
     -   now "Including" and "Both" labels
 -   Shift colour scale towards more intense to prevent cities being invisible with light background
@@ -50,4 +48,9 @@ When inst/extdata has the city\_ country\_ region\_ folders run with:
     -   on second thought they seem fine, implemented visibility button
 -   "In development" warning
     -   added in app banner
-
+-   Input filtering for table taken from mod_map_inputs (fill datatable filtering boxes)
+    -   done: can load filtering terms on initialisation
+    -   done: intial table filters brought from map inputs
+-   table loading time, to load the largest of the tables it takes at least 60 seconds
+  - informative loading indicators
+  

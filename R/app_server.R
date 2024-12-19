@@ -10,12 +10,10 @@
 #' @import glue
 #' @noRd
 app_server <- function(input, output, session) {
-  # Your application server logic
 
   # MAP VIEW
   inputs_a <- mod_map_inputs_server("inpbmap")
 
-  # guide from other app
   data_conn <- reactive({
 
     req(inputs_a$area())
@@ -59,5 +57,5 @@ app_server <- function(input, output, session) {
   mod_map_server("bmap", map_data_coll, inputs_a$area, inputs_a$outc, scelab=scene_label, inputs_a$opacity)
 
   # TABLE VIEW
-  mod_table_server("table")
+  mod_table_server("table", inputs_a)
 }

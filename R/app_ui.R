@@ -23,9 +23,8 @@ link_ehmres <- tags$a(shiny::icon("magnifying-glass"), "EHM-Research", href= "ht
 
 app_ui <- function(request) {
   tagList(
-    # Leave this function for adding external resources
+    # function for adding external resources
     golem_add_external_resources(),
-    # Your application UI logic
     page_fillable(
     gap="5px",
     card("IN-DEVELOPMENT ! - banner title tbd", padding=c(0), fill = FALSE,
@@ -69,7 +68,7 @@ golem_add_external_resources <- function() {
       app_title = "ehmhipmapp"
     ),
     tags$link(rel = "stylesheet", type = "text/css", href = "custom.css") # add this line to include the CSS
-    # Add here other external resources
-    # for example, you can add shinyalert::useShinyalert()
+    # add here other external resources
+    # e.g. add shinyalert::useShinyalert()
   )
 }

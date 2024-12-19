@@ -26,19 +26,6 @@ utils_filt <- function(conn, lev_pe, are, perio, leve, adap, agegrou, ss, s, ran
                   ssp == ss,
                   sc == s,
                   range == rang,
-                  adapt == adap) #%>% dplyr::mutate(an_est = round(an_est, 0))
-
-  # # LOCATION
-  # if (area == "Region" | any(locations %in% "All")) {
-  #
-  #   return(query)
-  #
-  # } else {
-  #
-  #   # add to country selector pattern
-  #   pattern <- paste(locations, collapse = "|")
-  #   query %>% dplyr::filter(base::grepl(pattern, country_name))
-  #
-  # }
+                  adapt == adap)
 
 }
