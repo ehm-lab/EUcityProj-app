@@ -70,7 +70,8 @@ mod_table_server <- function(id, filts){
           list(dt=dt, c_nms=c_nms, c_num=c_num, r_num=r_num)
           )
         })
-      })
+      # works to cache data and reduce loading time
+      }) %>% bindCache(filts$lev_per(), filts$area())
 
     trigger <- reactiveVal(FALSE)
 
