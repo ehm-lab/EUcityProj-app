@@ -24,23 +24,13 @@ rhub::check_for_cran()
 ## This will build a tar.gz that can be installed locally,
 ## sent to CRAN, or to a package manager
 devtools::build()
+remotes::install_local()
 
-## Docker ----
-## If you want to deploy via a generic Dockerfile
-golem::add_dockerfile_with_renv()
-## If you want to deploy to ShinyProxy
-golem::add_dockerfile_with_renv_shinyproxy()
-
-## Posit ----
+## ShinyApps.io
 ## If you want to deploy on Posit related platforms
-golem::add_positconnect_file()
 golem::add_shinyappsio_file()
-golem::add_shinyserver_file()
-
-## Deploy to Posit Connect or ShinyApps.io ----
-
-## Add/update manifest file (optional; for Git backed deployment on Posit )
-rsconnect::writeManifest()
+options(rsconnect.packrat=TRUE)
+golem::add_shinyappsio_file()
 
 ## In command line.
 rsconnect::deployApp(
@@ -50,12 +40,13 @@ rsconnect::deployApp(
     # Add any additional files unique to your app here.
     "R/",
     "inst/",
-    "data/",
+    #"data/",
     "NAMESPACE",
     "DESCRIPTION",
     "app.R"
   ),
   appId = rsconnect::deployments(".")$appID,
   lint = FALSE,
-  forceUpdate = TRUE
+  forceUpdate = TRUE,
+  account="ehm-lab"
 )

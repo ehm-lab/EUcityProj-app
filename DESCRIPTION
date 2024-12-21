@@ -2,13 +2,13 @@ Package: vistemphip
 Title: Temperature Effects Health Impact Projection Scenario Viewer
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Arturo", "de la Cruz Libardi", role = c("aut", "cre"),
+    person("Arturo", "de la Cruz Libardi", , "arturo.de-la-cruz-libardi@lshtm.ac.uk", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0001-1543-7999")),
     person("Pierre", "Masselot", role = c("aut", "dtc"),
            comment = c(ORCID = "0000-0002-7326-1290"))
   )
 Description: A one paragraph description of the purpose of the package.
-License: What license is it under?
+License: CC BY 4.0
 URL: https://github.com/ehm-lab/hipmappNM
 BugReports: https://github.com/ehm-lab/hipmappNM/issues
 Depends: 
@@ -25,6 +25,7 @@ Imports:
     golem,
     htmltools,
     mapgl,
+    pkgload,
     RColorBrewer,
     scico,
     sf,
@@ -33,6 +34,8 @@ Imports:
     shinycssloaders,
     shinyjqui,
     shinyWidgets,
+    stats,
+    utils,
     waiter
 Encoding: UTF-8
 LazyData: true

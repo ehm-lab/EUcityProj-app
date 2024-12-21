@@ -26,6 +26,8 @@ allow_named_choices(
 \item{init_choices}{named choices to initialize extended widget}
 
 \item{init_selected}{named select  to initialize extended widget}
+
+\item{...}{ellipsis innit?}
 }
 \value{
 a list of functions:

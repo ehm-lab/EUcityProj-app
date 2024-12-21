@@ -13,10 +13,10 @@ mod_map_inputs_ui <- function(id) {
       accordion(open = NULL, multiple = F,
         accordion_panel("View by:",
           radioGroupButtons(ns("lev_per"), NULL, choices = c("Warming level","Five-year periods"), selected="Warming level", justified = T),
-          radioGroupButtons(ns("area"), label=NULL, choices = c("City","Country","Region"), selected="City", justified = T),
+          radioGroupButtons(ns("area"), label=NULL, choices = c("City","Country","Region"), selected="Country", justified = T),
           conditionalPanel(
             condition = sprintf("input['%s'] == 'Five-year periods'", ns("lev_per")),
-            sliderTextInput(ns("period"),NULL,choices=period_ov,selected=period_ov[1],animate = TRUE, grid = TRUE)
+            sliderTextInput(ns("period"),NULL,choices=period_ov,selected=period_ov[4],animate = TRUE, grid = TRUE)
             ),
           conditionalPanel(
             condition = sprintf("input['%s'] == 'Warming level'", ns("lev_per")),

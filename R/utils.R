@@ -7,6 +7,7 @@
 #' @param session def
 #' @param init_choices  named choices to initialize extended widget
 #' @param init_selected named select  to initialize extended widget
+#' @param ... ellipsis innit?
 #'
 #' @return a list of functions:
 #' read() reads a named input from widget

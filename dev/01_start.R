@@ -26,6 +26,7 @@ golem::fill_desc(
     c(person(
       given = "Arturo", # Your First Name
       family = "de la Cruz Libardi", # Your Last Name
+      email = "arturo.de-la-cruz-libardi@lshtm.ac.uk",
       role = c("aut", "cre"), # Your role (here author/creator)
       comment = c(ORCID = "0009-0001-1543-7999")
     ),
@@ -51,6 +52,7 @@ devtools::build_readme()
 # Note that `contact` is required since usethis version 2.1.5
 # If your {usethis} version is older, you can remove that param
 usethis::use_code_of_conduct(contact = "Golem User")
+usethis::use_ccby_license()
 usethis::use_lifecycle_badge("Experimental")
 usethis::use_news_md(open = FALSE)
 

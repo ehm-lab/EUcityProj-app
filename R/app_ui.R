@@ -52,7 +52,6 @@ app_ui <- function(request) {
 #' This function is internally used to add external
 #' resources inside the Shiny application.
 #'
-#' @import shiny
 #' @importFrom golem add_resource_path activate_js favicon bundle_resources
 #' @noRd
 golem_add_external_resources <- function() {
@@ -67,7 +66,8 @@ golem_add_external_resources <- function() {
       path = app_sys("app/www"),
       app_title = "vistemphip"
     ),
-    tags$link(rel = "stylesheet", type = "text/css", href = "custom.css") # add this line to include the CSS
+    # maybe try hrfef ful path app/www/custom.css
+    #    tags$link(rel = "stylesheet", type = "text/css", href = "custom.css") # add this line to include the CSS
     # add here other external resources
     # e.g. add shinyalert::useShinyalert()
   )

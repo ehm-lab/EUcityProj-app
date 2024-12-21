@@ -7,6 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
+#' @importFrom utils write.csv
 mod_table_ui <- function(id) {
   ns <- NS(id)
     fluidRow(
@@ -55,7 +56,7 @@ mod_table_server <- function(id, filts){
 
         dt <-
           utils_connect_arrow(lev_per=filts$lev_per(), area=filts$area()) %>%
-          slice_sample(prop=.1) %>%
+          # slice_sample(prop=.1) %>%
           sfarrow::read_sf_dataset() %>% st_drop_geometry(.)  %>%
           select(any_of(ordered_newnames)) %>%
           mutate(across(where(is.numeric),\(x) round(x, 2))) %>%
@@ -132,13 +133,11 @@ mod_table_server <- function(id, filts){
         search_keywords[2:6] <- c(glue("[\"{filts$adapt()}\"]"),glue("[\"{filts$range()}\"]"),
                                   glue("[\"{filts$ssp()}\"]"),glue("[\"{filts$sc()}\"]"),
                                   glue("[\"{filts$agegroup()}\"]"))
-        print(search_keywords)
 
         search_keywords[1] <- switch(
           filts$lev_per(),
           "Warming level" = glue("[\"{filts$level()}\"]"),
-          "Five-year periods" = glue("[\"{filts$period()}\"]"),
-          NULL  # Default case, if needed
+          "Five-year periods" = glue("[\"{filts$period()}\"]")
         )
 
         updateSearch(proxy,

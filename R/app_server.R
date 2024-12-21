@@ -44,7 +44,7 @@ app_server <- function(input, output, session) {
     <span style='color:red;'>{names(range_ov[match(inputs_a$range(), range_ov)])}</span> temperature effects on age group
     <span style='color:red;'>'{names(agegroup_ov[match(inputs_a$agegroup(), agegroup_ov)])}'</span>.<br>
     At <span style='color:red;'>{tolower(inputs_a$lev_per())}</span>
-    <span style='color:red;'>{ifelse(inputs_a$lev_per() == 'Warming level', paste0(inputs_a$level(), '℃'), inputs_a$period())}</span>,
+    <span style='color:red;'>{ifelse(inputs_a$lev_per() == 'Warming level', paste0(inputs_a$level(), '&#176;C'), inputs_a$period())}</span>,
     <span style='color:red;'>{inputs_a$adapt()} adaptation</span> response, assuming
     <span style='color:red;'>SSP {inputs_a$ssp()}</span> and accounting for
     <span style='color:red;'>{names(sc_ov[match(inputs_a$sc(), sc_ov)])}</span> component(s)."

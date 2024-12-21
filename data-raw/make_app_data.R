@@ -34,7 +34,7 @@ geom_country <- geom_country %>%
   select(-LEVL_CODE, -NUTS_ID,-NUTS_NAME,-MOUNT_TYPE, -URBN_TYPE, -COAST_TYPE, -FID)
 
 # geom regions
-geom_region <- st_read("data_raw/EU_RGN/eu_region.shp")
+geom_region <- st_read("data-raw/EU_RGN/eu_region.shp")
 
 # lookup labels (city dataset has ? characters)
 disp_names <- read.csv("V:/VolumeQ/AGteam/Eurostat/lookup/URAU_NUTS_2021.csv") %>%
@@ -130,7 +130,8 @@ re_le <- prep_app_data(region_level, "rg")
 re_pe <- prep_app_data(region_period, "rg")
 
 ## MAKE OPTIONS VECTORS - no need to rerun - sysdata.RDS loads all and is in git
-level_ov <- levels(ci_le$level); names(level_ov) <- paste0(level_ov, "℃")
+# Celsisus degree and exponent 6 ascii vs non-ascii characters
+level_ov <- levels(ci_le$level); names(level_ov) <- paste0(level_ov, "&#176;C")
 period_ov <- levels(co_pe$period);
 adapt_ov <- levels(ci_le$adapt)
 range_ov <- levels(co_pe$range); names(range_ov) <- c("Cold","Heat","Total")
@@ -141,7 +142,7 @@ city_ov <- levels(ci_pe$city);
 country_ov <- levels(co_pe$country)
 region_ov <- levels(re_pe$region)
 outcomes_ov <- gsub("_est","",grep("est", names(re_le), value = T)); names(outcomes_ov) <-
-  c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10⁶)","Cumulative excess deaths")
+  c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10\u2076)","Cumulative excess deaths")
 
 usethis::use_data(adapt_ov,agegroup_ov,city_ov, country_ov, level_ov, outcomes_ov,
                   period_ov, range_ov, region_ov, ssp_ov, sc_ov,
@@ -154,3 +155,39 @@ sfarrow::write_sf_dataset(co_le,"inst/extdata/country_level",format="parquet", p
 sfarrow::write_sf_dataset(co_pe,"inst/extdata/country_period",format="parquet", partitioning="agegroup")
 sfarrow::write_sf_dataset(re_le,"inst/extdata/region_level", format = "parquet", partitioning="agegroup")
 sfarrow::write_sf_dataset(re_pe,"inst/extdata/region_period", format = "parquet", partitioning="agegroup")
+
+
+# CHECK ASCII CHARCTERS IN  OPTION VECTORS
+check_ascii <- function(x) {
+  result <- list()
+
+  # Check values for non-ASCII characters
+  if (is.character(x)) {
+    cleaned <- iconv(x, from = "UTF-8", to = "ASCII//TRANSLIT", sub = "byte")
+    result$values <- x[!is.na(cleaned) & cleaned != x]
+  }
+
+  # Check names for non-ASCII characters
+  if (!is.null(names(x))) {
+    cleaned_names <- iconv(names(x), from = "UTF-8", to = "ASCII//TRANSLIT", sub = "byte")
+    result$names <- names(x)[!is.na(cleaned_names) & cleaned_names != names(x)]
+  }
+
+  # Check lists recursively
+  if (is.list(x)) {
+    result$list <- lapply(x, check_ascii)
+  }
+
+  # Filter out empty results
+  result <- Filter(function(y) length(y) > 0, result)
+
+  if (length(result) == 0) return(NULL)
+  return(result)
+}
+
+
+load("R/sysdata.rda")
+
+# Apply to all objects
+results <- lapply(ls(), function(var) check_ascii(get(var)))
+results

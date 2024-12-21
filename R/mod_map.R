@@ -28,6 +28,8 @@ mod_map_ui <- function(id) {
 
 #' map Server Functions
 #'
+#' @importFrom stats quantile setNames
+#'
 #' @noRd
 mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
   moduleServer(id, function(input, output, session){
@@ -73,7 +75,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity){
                               setNames(paste0("an", suffixes), vnames)),
                      "af" = c(list(leg_title = "<b>Attributable fraction (%)</b>"),
                               setNames(paste0("af", suffixes), vnames)),
-                     "rate" = c(list(leg_title = "<b>Excess death rate (x10⁶)</b>"),
+                     "rate" = c(list(leg_title = "<b>Excess death rate (x10<sup>6</sup>)</b>"),
                                 setNames(paste0("rate", suffixes), vnames))
     )
     # to use results, index vlabcols e.g. vlabcols$est -> "cuman_est"
