@@ -3,6 +3,7 @@
 #' @param request Internal parameter for `{shiny}`.
 #'     DO NOT REMOVE.
 #' @import bslib
+#' @import pkgload
 #' @import mapgl
 #' @import arrow
 #' @import sf
@@ -23,29 +24,50 @@ link_ehmres <- tags$a(shiny::icon("magnifying-glass"), "EHM-Research", href= "ht
 
 app_ui <- function(request) {
   tagList(
-    # function for adding external resources
+    # loads external resources, such as CSS or JS files
     golem_add_external_resources(),
     page_fillable(
-    gap="5px",
-    card("IN-DEVELOPMENT ! - banner title tbd", padding=c(0), fill = FALSE,
-         height="60px", min_height="60px",max_height="60px"),
-    navset_card_underline(
-      nav_panel(
-        title="Map",
-        mod_map_ui("bmap")
+      gap = "5px",
+      # creates a banner with fixed dimensions, placeholder for title
+      card(
+        "IN-DEVELOPMENT ! - banner title tbd",
+        padding = c(0),
+        fill = FALSE,
+        height = "60px",
+        min_height = "60px",
+        max_height = "60px"
+      ),
+      # main navigation with tabs
+      navset_card_underline(
+        id = "tabs",
+        # tab for displaying the map, uses modular UI
+        nav_panel(
+          title = "Map",
+          mod_map_ui("bmap")
         ),
-      nav_panel(
-        title="Table",
-        mod_table_ui("table")
+        # tab for displaying a table, uses modular UI
+        nav_panel(
+          title = "Table",
+          mod_table_ui("table")
         ),
-      nav_panel(title="Research"),
-      nav_panel(title="Help"),
-      nav_spacer(),
-      nav_menu(title = "Links", nav_item(link_satrm), nav_item(link_ehm), nav_item(link_ehmres))
-    )
+        # placeholder tab for research content
+        nav_panel(title = "Research"),
+        # placeholder tab for help or documentation
+        nav_panel(title = "Help"),
+        # adds space for layout balance
+        nav_spacer(),
+        # menu for external links, items should be defined elsewhere
+        nav_menu(
+          title = "Links",
+          nav_item(link_satrm),
+          nav_item(link_ehm),
+          nav_item(link_ehmres)
+        )
+      )
     )
   )
 }
+
 
 #' Add external Resources to the Application
 #'
@@ -66,9 +88,7 @@ golem_add_external_resources <- function() {
       path = app_sys("app/www"),
       app_title = "vistemphip"
     ),
-    # maybe try hrfef ful path app/www/custom.css
-    #    tags$link(rel = "stylesheet", type = "text/css", href = "custom.css") # add this line to include the CSS
-    # add here other external resources
-    # e.g. add shinyalert::useShinyalert()
+    # add this line to include the CSS
+    # tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
   )
 }

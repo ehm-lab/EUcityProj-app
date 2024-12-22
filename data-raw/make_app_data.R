@@ -111,11 +111,11 @@ pqfs <- setNames(
 options(arrow.unsafe_metadata = F)
 
 city_level <- read_parquet(pqfs$city_level)
-city_period <- read_parquet(pqfs$city_period)
+city_period <- read_parquet(pqfs$city_period) %>% filter(!period %in% c(2010,2015,2020,2035,2045,2055,2065,2075,2085))
 country_level <- read_parquet(pqfs$country_level)
-country_period <- read_parquet(pqfs$country_period)
+country_period <- read_parquet(pqfs$country_period) %>% filter(!period %in% c(2010,2015,2020,2035,2045,2055,2065,2075,2085))
 region_level <- read_parquet(pqfs$region_level)
-region_period <- read_parquet(pqfs$region_period)
+region_period <- read_parquet(pqfs$region_period) %>% filter(!period %in% c(2010,2015,2020,2035,2045,2055,2065,2075,2085))
 
 # somehow i can only manage to delete the files, leaving an empty dir
 unlink(x=paste0(getwd(),"/results_parquet"), recursive=TRUE)
@@ -157,37 +157,37 @@ sfarrow::write_sf_dataset(re_le,"inst/extdata/region_level", format = "parquet",
 sfarrow::write_sf_dataset(re_pe,"inst/extdata/region_period", format = "parquet", partitioning="agegroup")
 
 
-# CHECK ASCII CHARCTERS IN  OPTION VECTORS
-check_ascii <- function(x) {
-  result <- list()
-
-  # Check values for non-ASCII characters
-  if (is.character(x)) {
-    cleaned <- iconv(x, from = "UTF-8", to = "ASCII//TRANSLIT", sub = "byte")
-    result$values <- x[!is.na(cleaned) & cleaned != x]
-  }
-
-  # Check names for non-ASCII characters
-  if (!is.null(names(x))) {
-    cleaned_names <- iconv(names(x), from = "UTF-8", to = "ASCII//TRANSLIT", sub = "byte")
-    result$names <- names(x)[!is.na(cleaned_names) & cleaned_names != names(x)]
-  }
-
-  # Check lists recursively
-  if (is.list(x)) {
-    result$list <- lapply(x, check_ascii)
-  }
-
-  # Filter out empty results
-  result <- Filter(function(y) length(y) > 0, result)
-
-  if (length(result) == 0) return(NULL)
-  return(result)
-}
-
-
-load("R/sysdata.rda")
-
-# Apply to all objects
-results <- lapply(ls(), function(var) check_ascii(get(var)))
-results
+# # CHECK ASCII CHARCTERS IN  OPTION VECTORS
+# check_ascii <- function(x) {
+#   result <- list()
+#
+#   # Check values for non-ASCII characters
+#   if (is.character(x)) {
+#     cleaned <- iconv(x, from = "UTF-8", to = "ASCII//TRANSLIT", sub = "byte")
+#     result$values <- x[!is.na(cleaned) & cleaned != x]
+#   }
+#
+#   # Check names for non-ASCII characters
+#   if (!is.null(names(x))) {
+#     cleaned_names <- iconv(names(x), from = "UTF-8", to = "ASCII//TRANSLIT", sub = "byte")
+#     result$names <- names(x)[!is.na(cleaned_names) & cleaned_names != names(x)]
+#   }
+#
+#   # Check lists recursively
+#   if (is.list(x)) {
+#     result$list <- lapply(x, check_ascii)
+#   }
+#
+#   # Filter out empty results
+#   result <- Filter(function(y) length(y) > 0, result)
+#
+#   if (length(result) == 0) return(NULL)
+#   return(result)
+# }
+#
+#
+# load("R/sysdata.rda")
+#
+# # Apply to all objects
+# results <- lapply(ls(), function(var) check_ascii(get(var)))
+# results

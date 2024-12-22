@@ -28,7 +28,7 @@ remotes::install_local()
 
 ## ShinyApps.io
 ## If you want to deploy on Posit related platforms
-golem::add_shinyappsio_file()
+
 options(rsconnect.packrat=TRUE)
 golem::add_shinyappsio_file()
 
@@ -50,3 +50,7 @@ rsconnect::deployApp(
   forceUpdate = TRUE,
   account="ehm-lab"
 )
+
+# all years bundle 1,016,384,974b
+# 2010, 2015 removed 949,569,037b
+# testing with many years removed
