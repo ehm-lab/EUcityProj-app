@@ -109,13 +109,13 @@ pqfs <- setNames(
 
 # WARNINGS EXPECTED (EXACT REASON UNKNOWN)
 options(arrow.unsafe_metadata = F)
-
+# c(2010,2015,2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090 2095)
 city_level <- read_parquet(pqfs$city_level)
-city_period <- read_parquet(pqfs$city_period) %>% filter(!period %in% c(2010,2015,2020,2035,2045,2055,2065,2075,2085))
+city_period <- read_parquet(pqfs$city_period) # %>% filter(!period %in% c(2010,2015,2035,2045,2055,2065,2075,2085))
 country_level <- read_parquet(pqfs$country_level)
-country_period <- read_parquet(pqfs$country_period) %>% filter(!period %in% c(2010,2015,2020,2035,2045,2055,2065,2075,2085))
+country_period <- read_parquet(pqfs$country_period) # %>% filter(!period %in% c(2010,2015,2035,2045,2055,2065,2075,2085))
 region_level <- read_parquet(pqfs$region_level)
-region_period <- read_parquet(pqfs$region_period) %>% filter(!period %in% c(2010,2015,2020,2035,2045,2055,2065,2075,2085))
+region_period <- read_parquet(pqfs$region_period) # %>% filter(!period %in% c(2010,2015,2035,2045,2055,2065,2075,2085))
 
 # somehow i can only manage to delete the files, leaving an empty dir
 unlink(x=paste0(getwd(),"/results_parquet"), recursive=TRUE)
@@ -143,9 +143,19 @@ country_ov <- levels(co_pe$country)
 region_ov <- levels(re_pe$region)
 outcomes_ov <- gsub("_est","",grep("est", names(re_le), value = T)); names(outcomes_ov) <-
   c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10\u2076)","Cumulative excess deaths")
+ordered_newnames <- c(
+  "Level" = "level", "Period" = "period", "Adaptation" = "adapt", "Temp.range" = "range",
+  "SSP" = "ssp", "Sc" = "sc", "Age.group" = "agegroup", "Country.code" = "country_code",
+  "Country" = "country_name", "City" = "city_name", "City.code" = "city", "Region" = "region",
+  "Excess.deaths" = "an_est", "AF(%)" = "af_est", "Rate(*10^6)" = "rate_est", "Cumulative" = "cuman_est",
+  setNames(
+    paste0(rep(c("an", "af", "rate", "cuman"), each = 2), c("_low", "_high")),
+    paste0(rep(c("Exc.deaths", "AF", "Rate", "Cumulative"), each = 2), c("_low", "_high"))
+  )
+)
 
 usethis::use_data(adapt_ov,agegroup_ov,city_ov, country_ov, level_ov, outcomes_ov,
-                  period_ov, range_ov, region_ov, ssp_ov, sc_ov,
+                  period_ov, range_ov, region_ov, ssp_ov, sc_ov, ordered_newnames,
                   internal=TRUE, overwrite = TRUE)
 
 ## SAVE PARITTIONED PARQUET FILES - warning expected

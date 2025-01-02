@@ -15,3 +15,6 @@ golem::document_and_reload()
 run_app()
 
 
+# if all works add full period, all years,
+
+# if doesnt work, add fi;lter for age, print number of rows loaded, either as table input or to rpevent extra loading, allowing for multiple secltion

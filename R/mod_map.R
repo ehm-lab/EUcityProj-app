@@ -174,7 +174,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
             position = "top-right"
           )
       }
-    }) %>% bindEvent(mapdata())
+    }) %>% bindEvent(mapdata(), outc())
 
     # updates opacity of map layers based on input
     observe({

@@ -8,6 +8,7 @@
 #' @import RColorBrewer
 #' @import scico
 #' @import glue
+#' @importFrom utils head tail
 #' @noRd
 app_server <- function(input, output, session) {
 
@@ -17,7 +18,7 @@ app_server <- function(input, output, session) {
   inputs_a <- mod_map_inputs_server("inpbmap")
 
   # establishes a reactive connection to the data source based on selected inputs
-  data_conn <- reactive({
+  map_data_conn <- reactive({
     req(inputs_a$area()) # ensures area input is provided
     utils_connect_arrow(
       lev_per = inputs_a$lev_per(),
@@ -26,9 +27,9 @@ app_server <- function(input, output, session) {
   })
 
   # builds a filtered query object based on user inputs
-  data_query <- reactive({
+  map_data_query <- reactive({
     utils_filt(
-      conn = data_conn(),
+      conn = map_data_conn(),
       lev_pe = inputs_a$lev_per(),
       are = inputs_a$area(),
       perio = inputs_a$period(),
@@ -43,7 +44,7 @@ app_server <- function(input, output, session) {
 
   # collects data for rendering the map from the query
   map_data_coll <- reactive({
-    utils_collect(query = data_query())
+    utils_collect(query = map_data_query())
   })
 
   # generates a detailed label describing the current map scenario
@@ -71,12 +72,91 @@ app_server <- function(input, output, session) {
   )
 
   # TABLE VIEW
+  inputs_b <- mod_table_inputs_server("inpdt")
+
+  # establishes a reactive connection to the data source based on selected inputs
+  dt_data_conn <- reactive({
+    req(inputs_b$area()) # ensures area input is provided
+    utils_connect_arrow(
+      lev_per = inputs_b$lev_per(),
+      area = inputs_b$area()
+    )
+  })
+
+  # prepares table data reactively based on filters
+  dt_data <- reactive({
+    req(input$tabs == "Table") # ensures the current tab is "Table"
+
+    withProgress(message = "Preparing table data...", value = 0, {
+      incProgress(0.1)
+
+      query <- dt_data_conn()
+
+      # DATA TYPE
+      if (inputs_b$lev_per()=="Five-year periods"){
+
+        query <- query %>% dplyr::filter(period==inputs_b$period())
+
+      } else if (inputs_b$lev_per()=="Warming level") {
+
+        query <- query %>% dplyr::filter(level==inputs_b$level())
+
+      }
+
+      dtcon <- query %>%
+        dplyr::filter(agegroup %in% inputs_b$agegroup(),
+                      ssp == inputs_b$ssp(),
+                      sc == inputs_b$sc(),
+                      range == inputs_b$range(),
+                      adapt == inputs_b$adapt())
+
+      dtrows <- nrow(dtcon)
+      dtcols <- length(intersect(ordered_newnames, names(dtcon)))
+
+      chunk_size <- 2000
+      n_chunks <- ceiling(dtrows / chunk_size)
+
+      # initialize a list to store data chunks
+      chunk_list <- vector("list", n_chunks)
+
+      sprog <- 0.1
+      incprog <- 0.7 / n_chunks
+
+      for (chk in seq_len(n_chunks)) {
+        cat(chk,"\n")
+        srow <- (chk - 1) * chunk_size + 1
+        erow <- min(chk * chunk_size, dtrows)
+
+        dt <- dtcon %>%
+          head(erow) %>%
+          tail(erow - srow + 1) %>%
+          # sample ro sf_read here
+          dplyr::collect() %>%
+          select(any_of(ordered_newnames)) %>%
+          mutate(across(where(is.numeric), \(x) round(x, 2))) %>%
+          mutate(across(any_of(c("Age.group", "Country", "City")), as.factor))
+
+        # store the chunk in the list
+        chunk_list[[chk]] <- dt
+
+        incProgress(incprog, detail = paste0(round((erow/dtrows)*100),"%"))
+      }
+
+      # combine all chunks into a single data frame
+      dtf <- data.table::rbindlist(chunk_list, use.names = TRUE, fill = TRUE)
+
+      cat("loaded:", nrow(dtf), "/n")
+
+      return(
+        list(dt = dtf, c_nms = colnames(dtf), c_num = ncol(dtf), r_num = nrow(dtf))
+      )
+    })
+  })
 
   # initializes the table server module with map inputs and active tab
   mod_table_server(
     "table",
-    inputs_a,
-    reactive(input$tabs)
+    dt_data
   )
 }
 

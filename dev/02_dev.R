@@ -33,7 +33,7 @@ golem::add_fct("helpers", with_test = TRUE)
 golem::add_utils("filt", with_test = F)
 golem::add_utils("collect", with_test = F)
 golem::add_utils("make_tabl", with_test = F)
-
+golem::add_utils("generate_search_keywords", with_test = F)
 
 ## External resources
 ## Creates .js and .css files at inst/app/www
