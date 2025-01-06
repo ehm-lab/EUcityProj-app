@@ -92,7 +92,7 @@ mod_map_inputs_ui <- function(id) {
         size = "xs",
         justified = TRUE
       ),
-      tagAppendAttributes(
+      #tagAppendAttributes(
         radioGroupButtons(
           ns("sc"),
           "Including:",
@@ -100,9 +100,10 @@ mod_map_inputs_ui <- function(id) {
           sc_ov[2],
           size = "xs",
           justified = TRUE
-        ),
-        id = "sc_including"
-      )
+        )
+      # ,
+      #   id = "sc_including"
+      # )
     ),
     # conditional panel for opacity control (non-city views only)
     conditionalPanel(
