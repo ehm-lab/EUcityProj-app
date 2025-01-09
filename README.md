@@ -5,9 +5,11 @@ This app lets you explore the projection results using an interactive map and ta
 The study analyzed the effects of cold and heat separately, as well as their distinct impacts on different age groups. The interactive controls let you view any combination of these cases. You can also use the toggles to adjust the scenario conditions under which the projections were generated.
 
 
-View the web-app at [https://ehm-lab.shinyapps.io/vistemphip/](https://ehm-lab.shinyapps.io/vistemphip/)
+View the web-app at:  
+[https://ehm-lab.shinyapps.io/vistemphip/](https://ehm-lab.shinyapps.io/vistemphip/)
 
-View the full study results at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14004322.svg)](https://doi.org/10.5281/zenodo.14004322)
+Access the full study results at:  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14004322.svg)](https://doi.org/10.5281/zenodo.14004322)
 
 
 Full reference upcoming
