@@ -1,24 +1,8 @@
-Working repo for companion app to Nature Medicine paper
+Repository for companion shiny-app to Nature Medicine paper
 
-To run, check out directory then build app datasets with data_raw/make_app_data.R\
-App data are (large) excluded from version control via .gitignore\
-When inst/extdata has the city\_ country\_ region\_ folders run with:
+This app lets you explore the projection results using an interactive map and table. The map shows how projected mortality outcomes vary across different locations. You can look at the results by global warming levels or time periods, and zoom in on cities, countries, or regions.
 
-`golem::document_and_reload(); run_app()`
+The study analyzed the effects of cold and heat separately, as well as their distinct impacts on different age groups. The interactive controls let you view any combination of these cases. You can also use the toggles to adjust the scenario conditions under which the projections were generated.
 
-[**Ideas**]{.underline}
-
--   fixed colour scale and legend ? (visualise change through time)
-
-**Help with word/UI**
-
--   Improve readability of dynamic scenario label text
--   Add content in help page (how to use the app practically)
-    -   Scenario/Component toggles
-    -   Map clicks to see values
-    -   ...
--   Add content in research page (what is the research behind and the meaning of the numbers)
-    -   definitions
-    -   links
-    -   ...
--   Table tab UI, column layout/row layout
+View the web-app at https://ehm-lab.shinyapps.io/vistemphip/
+View the full study results at https://zenodo.org/records/14004322
