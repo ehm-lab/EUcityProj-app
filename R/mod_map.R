@@ -9,15 +9,11 @@
 #' @importFrom shiny NS tagList
 mod_map_ui <- function(id) {
   ns <- NS(id)
-
-  # creates a card layout with inputs on the left and the map on the right
-  card(
-    height = 500, full_screen = FALSE,
-    # displays the scenario label dynamically
-    card_header(uiOutput(ns("scenariolabel"))),
+  tagList(
+    uiOutput(ns("scenariolabel")),
     layout_column_wrap(
       width = NULL,
-      style = css(grid_template_columns = "1fr 3fr", grid_column_gap = "5px"),
+      style = css(grid_template_columns = "1fr 4fr", grid_column_gap = "5px"),
       card_body(
         class = "p-0",
         mod_map_inputs_ui("inpbmap") # map input controls
@@ -99,15 +95,15 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
       quants <- quantile(v, seq(0, 1, 0.2), names = FALSE)
       pbreaks <- quants[-c(1, 6)]
       plabs <- paste(
-        paste0("<b>", round(quants[-6], 2), "</b>"),
-        paste0("<b>", round(quants[-1], 2), "</b>"),
+        paste0("<b>", format(round(quants[-6], 2), big.mark=","), "</b>"),
+        paste0("<b>", format(round(quants[-1], 2), big.mark=","), "</b>"),
         sep = " to "
       )
 
       # adds hover and popup information to map data
       md$popup <- glue::glue(
-        "<b>{vlabcols$leg_title}: {round(md[[vlabcols$est]], 2)}</b><br>
-         <b>95% eCI: </b>{round(md[[vlabcols$low]], 2)} to {round(md[[vlabcols$high]], 2)}"
+        "<b>{vlabcols$leg_title}: {format(round(md[[vlabcols$est]], 2), big.mark = ',')}</b><br>
+         <b>95% eCI: </b>{format(round(md[[vlabcols$low]], 2), big.mark = ',')} to {format(round(md[[vlabcols$high]], 2), big.mark = ',')}"
       )
       md$hover <- if ("city_name" %in% names(md)) {
         glue::glue("<b>{md$city_name}</b>")
@@ -185,7 +181,42 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
 
     # dynamically renders the scenario label
     output$scenariolabel <- renderUI({
-      HTML(scelab())
+
+      # can be copy pasted to the table tab
+      levorper <- switch(scelab$le_pe(),
+                         "Warming level" = "Global warming level",
+                         "Ten-year periods" = "Period")
+      levorper_val <- switch(scelab$le_pe(),
+                             "Warming level" = paste0(scelab$lev(), "°C"),
+                             "Ten-year periods"=scelab$perio())
+
+      inc_scen <- paste0("Including ",switch(as.character(scelab$s()),
+                                             "clim" = "climate change",
+                                             "demo" = "demographic change",
+                                             "full" = "climate and demographic change")," effects")
+
+        layout_column_wrap(
+          width = 1/4,
+          div(
+            style = "border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; line-height:1; font-size:0.9em;",
+            p(strong(levorper)),
+            p(levorper_val)
+          ),
+          div(
+            style = "border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; line-height:1; font-size:0.9em;",
+            p(strong("Temperature range:"),names(range_ov[match(scelab$rang(), range_ov)])),
+            p(strong("Age group:"),names(agegroup_ov[match(scelab$agegr(), agegroup_ov)]))
+          ),
+          div(
+            style = "border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; line-height:1; font-size:0.9em;",
+            p(strong("Adaptation to heat:"), scelab$adap()),
+            p(strong("Shared Socioeconomic Pathway:"), names(ssp_ov[match(scelab$ss(), ssp_ov)]))
+          ),
+          div(
+            style = "border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9; line-height:1; font-size:0.9em;",
+            p(strong(inc_scen))
+          )
+        )
     })
   })
 }

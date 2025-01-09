@@ -12,14 +12,14 @@ mod_map_inputs_ui <- function(id) {
 
   # creates an accordion layout with panels for selecting inputs
   accordion(
-    open = NULL, multiple = FALSE,
+    open = NULL, multiple = FALSE, style="background-color:#FFF;",
     # panel for selecting view type and time-based options
     accordion_panel(
       "View by:",
       radioGroupButtons(
         ns("lev_per"),
         NULL,
-        choices = c("Warming level", "Five-year periods"),
+        choices = c("Warming level", "Ten-year periods"),
         selected = "Warming level",
         justified = TRUE
       ),
@@ -31,13 +31,13 @@ mod_map_inputs_ui <- function(id) {
         justified = TRUE
       ),
       conditionalPanel(
-        condition = sprintf("input['%s'] == 'Five-year periods'", ns("lev_per")),
+        condition = sprintf("input['%s'] == 'Ten-year periods'", ns("lev_per")),
         sliderTextInput(
           ns("period"),
           NULL,
           choices = period_ov,
           selected = period_ov[4],
-          animate = TRUE,
+          animate = FALSE,
           grid = TRUE
         )
       ),
@@ -92,7 +92,6 @@ mod_map_inputs_ui <- function(id) {
         size = "xs",
         justified = TRUE
       ),
-      #tagAppendAttributes(
         radioGroupButtons(
           ns("sc"),
           "Including:",
@@ -101,9 +100,6 @@ mod_map_inputs_ui <- function(id) {
           size = "xs",
           justified = TRUE
         )
-      # ,
-      #   id = "sc_including"
-      # )
     ),
     # conditional panel for opacity control (non-city views only)
     conditionalPanel(

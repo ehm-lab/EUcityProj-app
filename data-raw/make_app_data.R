@@ -111,11 +111,11 @@ pqfs <- setNames(
 options(arrow.unsafe_metadata = F)
 # c(2010,2015,2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090 2095)
 city_level <- read_parquet(pqfs$city_level)
-city_period <- read_parquet(pqfs$city_period) # %>% filter(!period %in% c(2010,2015,2035,2045,2055,2065,2075,2085))
+city_period<- read_parquet(pqfs$city_period) %>% filter(period %in% c(2010,2020,2030,2040,2050,2060,2070,2080,2090))
 country_level <- read_parquet(pqfs$country_level)
-country_period <- read_parquet(pqfs$country_period) # %>% filter(!period %in% c(2010,2015,2035,2045,2055,2065,2075,2085))
+country_period <- read_parquet(pqfs$country_period) %>% filter(period %in% c(2010,2020,2030,2040,2050,2060,2070,2080,2090))
 region_level <- read_parquet(pqfs$region_level)
-region_period <- read_parquet(pqfs$region_period) # %>% filter(!period %in% c(2010,2015,2035,2045,2055,2065,2075,2085))
+region_period <- read_parquet(pqfs$region_period) %>% filter(period %in% c(2010,2020,2030,2040,2050,2060,2070,2080,2090))
 
 # somehow i can only manage to delete the files, leaving an empty dir
 unlink(x=paste0(getwd(),"/results_parquet"), recursive=TRUE)
@@ -135,19 +135,21 @@ level_ov <- levels(ci_le$level); names(level_ov) <- paste0(level_ov, "&#176;C")
 period_ov <- levels(co_pe$period);
 adapt_ov <- levels(ci_le$adapt)
 range_ov <- levels(co_pe$range); names(range_ov) <- c("Cold","Heat","Total")
-ssp_ov <- levels(co_pe$ssp); names(ssp_ov) <- paste("SSP",ssp_ov)
+ssp_ov <- levels(co_pe$ssp); names(ssp_ov) <- paste0("SSP",ssp_ov,"-",c("2.6","4.5","7.0"))
 sc_ov <- levels(ci_le$sc); names(sc_ov) <- c("Climate change", "Demographic change", "Both")
 agegroup_ov <- levels(co_pe$agegroup); names(agegroup_ov) <- agegroup_ov; names(agegroup_ov)[6] <- "All"
 city_ov <- levels(ci_pe$city);
 country_ov <- levels(co_pe$country)
 region_ov <- levels(re_pe$region)
 outcomes_ov <- gsub("_est","",grep("est", names(re_le), value = T)); names(outcomes_ov) <-
-  c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10\u2076)","Cumulative excess deaths")
+  c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10\u2075)","Cumulative excess deaths")
+
+# works with spaces
 ordered_newnames <- c(
-  "Level" = "level", "Period" = "period", "Adaptation" = "adapt", "Temp.range" = "range",
-  "SSP" = "ssp", "Sc" = "sc", "Age.group" = "agegroup", "Country.code" = "country_code",
-  "Country" = "country_name", "City" = "city_name", "City.code" = "city", "Region" = "region",
-  "Excess.deaths" = "an_est", "AF(%)" = "af_est", "Rate(*10^6)" = "rate_est", "Cumulative" = "cuman_est",
+  "Level" = "level", "Period" = "period", "Adaptation" = "adapt", "Temp range" = "range",
+  "SSP" = "ssp", "Sc" = "sc", "Age group" = "agegroup", "Country code" = "country_code",
+  "Country" = "country_name", "City" = "city_name", "City code" = "city", "Region" = "region",
+  "Excess deaths" = "an_est", "AF(%)" = "af_est", "Rate(x10\u2075)" = "rate_est", "Cumulative" = "cuman_est",
   setNames(
     paste0(rep(c("an", "af", "rate", "cuman"), each = 2), c("_low", "_high")),
     paste0(rep(c("Exc.deaths", "AF", "Rate", "Cumulative"), each = 2), c("_low", "_high"))

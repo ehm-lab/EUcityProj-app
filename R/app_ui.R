@@ -16,6 +16,7 @@
 #' @import shinyjqui
 #' @import glue
 #' @import crayon
+#' @import markdown
 #' @noRd
 #'
 link_satrm <- tags$a(shiny::icon("temperature-high"), "Article", href = "https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00138-3/fulltext", target = "_blank")
@@ -28,14 +29,27 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     page_fillable(
       gap = "5px",
-      # creates a banner with fixed dimensions, placeholder for title
-      card(
-        "IN-DEVELOPMENT ! - banner title tbd",
-        padding = c(0),
-        fill = FALSE,
-        height = "60px",
-        min_height = "60px",
-        max_height = "60px"
+      tags$div(
+        style = "
+    background-color: #FFF;
+    margin: 0;
+    padding: 4px 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+  ",
+        p(
+          style = "
+      margin: 0;
+      padding: 0;
+      font-size:1.1em;
+      line-height: 1.5em;
+    ",
+          "Visualizing future heat and cold related mortality across Europe"
+        )
       ),
       # main navigation with tabs
       navset_card_underline(
@@ -50,10 +64,10 @@ app_ui <- function(request) {
           title = "Table",
           mod_table_ui("table")
         ),
-        # placeholder tab for research content
-        nav_panel(title = "Research"),
-        # placeholder tab for help or documentation
-        nav_panel(title = "Help"),
+        # placeholder tab for research content, help or documentation
+        nav_panel(title = "Information",
+                  includeMarkdown("inst/app/www/info.md")
+                  ),
         # adds space for layout balance
         nav_spacer(),
         # menu for external links, items should be defined elsewhere
@@ -88,7 +102,7 @@ golem_add_external_resources <- function() {
       path = app_sys("app/www"),
       app_title = "vistemphip"
     ),
-    # add this line to include the CSS
+    # add this line to include the CSS - somehow automatically applied
     # tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
   )
 }

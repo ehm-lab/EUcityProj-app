@@ -25,6 +25,7 @@ Imports:
     golem,
     htmltools,
     mapgl,
+    markdown,
     pkgload,
     RColorBrewer,
     scico,

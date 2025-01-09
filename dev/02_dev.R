@@ -21,7 +21,12 @@ attachment::att_amend_desc()
 ## Add modules ----
 ## Create a module infrastructure in R/
 golem::add_module(name = "map_inputs", with_test = F) # Name of the module
+golem::add_module(name = "plot_inputs", with_test = F) # Name of the module
+
 golem::add_module(name = "map", with_test = F) # Name of the module
+golem::add_module(name = "plots", with_test = F) # Name of the module
+golem::add_module(name = "info", with_test = F) # Name of the module
+
 golem::add_module(name = "collect", with_test = F) # Name of the module
 golem::add_module(name = "table", with_test = F) # Name of the module
 golem::add_module(name = "table_inputs", with_test = F) # Name of the module
@@ -34,7 +39,7 @@ golem::add_utils("filt", with_test = F)
 golem::add_utils("collect", with_test = F)
 golem::add_utils("make_tabl", with_test = F)
 golem::add_utils("generate_search_keywords", with_test = F)
-
+golem::add_utils("filt_query_collect",with_test = F)
 ## External resources
 ## Creates .js and .css files at inst/app/www
 golem::add_js_file("script")
