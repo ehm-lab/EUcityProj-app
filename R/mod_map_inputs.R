@@ -19,7 +19,7 @@ mod_map_inputs_ui <- function(id) {
       radioGroupButtons(
         ns("lev_per"),
         NULL,
-        choices = c("Warming level", "Ten-year periods"),
+        choices = c("Warming level", "Five-year periods"),
         selected = "Warming level",
         justified = TRUE
       ),
@@ -31,7 +31,7 @@ mod_map_inputs_ui <- function(id) {
         justified = TRUE
       ),
       conditionalPanel(
-        condition = sprintf("input['%s'] == 'Ten-year periods'", ns("lev_per")),
+        condition = sprintf("input['%s'] == 'Five-year periods'", ns("lev_per")),
         sliderTextInput(
           ns("period"),
           NULL,

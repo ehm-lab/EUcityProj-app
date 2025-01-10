@@ -40,6 +40,7 @@ golem::add_utils("collect", with_test = F)
 golem::add_utils("make_tabl", with_test = F)
 golem::add_utils("generate_search_keywords", with_test = F)
 golem::add_utils("filt_query_collect",with_test = F)
+golem::add_utils("scenario_uiboxes", with_test = F)
 ## External resources
 ## Creates .js and .css files at inst/app/www
 golem::add_js_file("script")

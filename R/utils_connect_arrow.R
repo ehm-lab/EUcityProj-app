@@ -6,7 +6,7 @@
 #'
 #' @noRd
 utils_connect_arrow <- function(lev_per, area) {
-  if (lev_per == "Ten-year periods") {
+  if (lev_per == "Five-year periods") {
     switch(
       area,
       "City"    = arrow::open_dataset(sources = system.file("extdata/city_period", package = "vistemphip"), partitioning = "agegroup"),

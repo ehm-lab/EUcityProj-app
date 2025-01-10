@@ -21,7 +21,7 @@
 golem::fill_desc(
   pkg_name = "vistemphip", # The name of the golem package containing the app (typically lowercase, no underscore or periods)
   pkg_title = "Temperature Effects Health Impact Projection Scenario Viewer", # What the Package Does (One Line, Title Case, No Period)
-  pkg_description = "A one paragraph description of the purpose of the package.", # What the package does (one paragraph).
+  pkg_description = "This app lets you explore the study results using an interactive map and table. The map shows how projected mortality outcomes vary across different locations. You can look at the results by global warming levels or five-year time periods (with the year selected being the start of the period), and zoom in on cities, countries, or regions.", # What the package does (one paragraph).
   authors =
     c(person(
       given = "Arturo", # Your First Name

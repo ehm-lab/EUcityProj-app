@@ -7,7 +7,7 @@ Authors@R: c(
     person("Pierre", "Masselot", role = c("aut", "dtc"),
            comment = c(ORCID = "0000-0002-7326-1290"))
   )
-Description: A one paragraph description of the purpose of the package.
+Description: This app lets you explore the study results using an interactive map and table. The map shows how projected mortality outcomes vary across different locations. You can look at the results by global warming levels or five-year time periods (with the year selected being the start of the period), and zoom in on cities, countries, or regions.
 License: CC BY 4.0
 URL: https://github.com/ehm-lab/hipmappNM
 BugReports: https://github.com/ehm-lab/hipmappNM/issues

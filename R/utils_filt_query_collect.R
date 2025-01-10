@@ -7,7 +7,7 @@
 #' @noRd
 utils_filt_query_collect <- function(ds, lev_pe, perio, leve, adap, agegrou, ss, s, rang, fortable=F) {
   # build query
-  if (lev_pe == "Ten-year periods") {
+  if (lev_pe == "Five-year periods") {
     ds <- ds %>% dplyr::filter(period %in% perio)
   } else if (lev_pe == "Warming level") {
     ds <- ds %>% dplyr::filter(level %in% leve)
@@ -27,10 +27,6 @@ utils_filt_query_collect <- function(ds, lev_pe, perio, leve, adap, agegrou, ss,
     chunk_size <- min(dtrows, 2000000)
     n_chunks <- ceiling(dtrows / chunk_size)
 
-    print(dtrows);
-    print(chunk_size)
-    print(n_chunks)
-
     incprog <- 0.9 / n_chunks
 
     chunk_list <- vector("list", n_chunks)
@@ -43,9 +39,7 @@ utils_filt_query_collect <- function(ds, lev_pe, perio, leve, adap, agegrou, ss,
       chunk_df <- ds %>%
         head(erow) %>%
         tail(erow - srow + 1) %>%
-        # the whole point is collection in chunks ...
         dplyr::collect()
-      # rounding and factor can also be done in each collection but it is more intense
 
       chunk_list[[chunk]] <- chunk_df
       incProgress(incprog, detail = paste0("Chunk ", chunk, " of ", n_chunks))
@@ -63,7 +57,6 @@ utils_filt_query_collect <- function(ds, lev_pe, perio, leve, adap, agegrou, ss,
       list(dt = dtf, c_nms = colnames(dtf), c_num = ncol(dtf), r_num = nrow(dtf))
     )
   } else {
-    # if the dataset contains geometry, use sfarrow to read
     return(
       sfarrow::read_sf_dataset(ds)
       )

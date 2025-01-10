@@ -10,7 +10,7 @@ The study emphasizes the importance of strong climate mitigation policies and ro
 
 #### App
 
-This app lets you explore the projection results using an interactive map and table. The map shows how projected mortality outcomes vary across different locations. You can look at the results by global warming levels or time periods, and zoom in on cities, countries, or regions.
+This app lets you explore the study results using an interactive map and table. The map shows how projected mortality outcomes vary across different locations. You can look at the results by global warming levels or five-year time periods (with the year selected being the start of the period), and zoom in on cities, countries, or regions.
 
 The study analyzed the effects of cold and heat separately, as well as their distinct impacts on different age groups. The interactive controls let you view any combination of these cases. You can also use the toggles to adjust the scenario conditions under which the projections were generated.
 
@@ -42,12 +42,12 @@ Some technical terms related to the outcomes and scenarios are defined below.
 ---
 
 #### Full Projections Access
-The researchers allow open-access to the full set of detailed results at five-year intervals and more research artifacts through the repository linked below.
+The researchers allow open-access to the full set of detailed results and more research artifacts through the repository linked below.
 
 ---
 
 #### Links
 
 - **Data repository:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14004322.svg)](https://doi.org/10.5281/zenodo.14004322)  
-- **Lab Website:** [https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab](https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab)
+- **Lab website:** [https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab](https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab)
 - **Paper:** [upcoming]()

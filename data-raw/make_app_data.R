@@ -144,20 +144,36 @@ region_ov <- levels(re_pe$region)
 outcomes_ov <- gsub("_est","",grep("est", names(re_le), value = T)); names(outcomes_ov) <-
   c("Excess deaths","Attributable fraction (%)", "Excess death rate (x10\u2075)","Cumulative excess deaths")
 
+outc_names <- names(outcomes_ov)
+low_high_cb <- c(" lower confidence bound", " higher confidence bound")
+
 # works with spaces
 ordered_newnames <- c(
   "Level" = "level", "Period" = "period", "Adaptation" = "adapt", "Temp range" = "range",
   "SSP" = "ssp", "Sc" = "sc", "Age group" = "agegroup", "Country code" = "country_code",
   "Country" = "country_name", "City" = "city_name", "City code" = "city", "Region" = "region",
-  "Excess deaths" = "an_est", "AF(%)" = "af_est", "Rate(x10\u2075)" = "rate_est", "Cumulative" = "cuman_est",
+  "Excess deaths" = "an_est", "Attributable fraction (%)" = "af_est", "Excess death rate (x10\u2075)" = "rate_est", "Cumulative excess deaths" = "cuman_est",
   setNames(
     paste0(rep(c("an", "af", "rate", "cuman"), each = 2), c("_low", "_high")),
-    paste0(rep(c("Exc.deaths", "AF", "Rate", "Cumulative"), each = 2), c("_low", "_high"))
+    paste0(rep(outc_names, each = 2), low_high_cb)
   )
 )
 
+grpcols <- setNames(
+  list(
+    c(outc_names[1], paste0(outc_names[1],low_high_cb)),
+    c(outc_names[2], paste0(outc_names[2],low_high_cb)),
+    c(outc_names[3], paste0(outc_names[3],low_high_cb)),
+    c(outc_names[4], paste0(outc_names[4],low_high_cb))
+  ),
+  outc_names
+)
+
+# ordered_shownames <-
+
 usethis::use_data(adapt_ov,agegroup_ov,city_ov, country_ov, level_ov, outcomes_ov,
                   period_ov, range_ov, region_ov, ssp_ov, sc_ov, ordered_newnames,
+                  grpcols,outc_names,low_high_cb,
                   internal=TRUE, overwrite = TRUE)
 
 ## SAVE PARITTIONED PARQUET FILES - warning expected
