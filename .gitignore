@@ -7,13 +7,9 @@ inst/extdata/country_*
 inst/extdata/region_*
 
 notes/
-notes\
 
 data-raw/
-data-raw\
 
 dev/
-dev\
 
 results_parquet/
-results_parquet\
