@@ -13,3 +13,5 @@ data-raw/
 dev/
 
 results_parquet/
+
+rsconnect/
