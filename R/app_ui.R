@@ -19,7 +19,7 @@
 #' @import markdown
 #' @noRd
 #'
-link_satrm <- tags$a(shiny::icon("temperature-high"), "Article", href = "https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00138-3/fulltext", target = "_blank")
+link_satrm <- tags$a(shiny::icon("temperature-high"), "Article", href = "https://www.nature.com/articles/s41591-024-03452-2", target = "_blank")
 link_ehm <- tags$a(shiny::icon("people-group"), "EHM-Lab", href = "https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab", target = "_blank")
 link_ehmres <- tags$a(shiny::icon("magnifying-glass"), "EHM-Research", href= "https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab#research", target = "_blank")
 

@@ -50,4 +50,40 @@ The researchers allow open-access to the full set of detailed results and more r
 
 - **Data repository:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14004322.svg)](https://doi.org/10.5281/zenodo.14004322)  
 - **Lab website:** [https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab](https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab)
-- **Paper:** [upcoming]()
+- **Paper:** upcoming [![DOI](https://www.nature.com/articles/s41591-024-03452-2)](https://www.nature.com/articles/s41591-024-03452-2)
+
+---
+
+#### References
+
+##### Basemap tiles
+CARTO (2025). CartoDB/basemap-styles. https://github.com/CartoDB/basemap-styles.
+
+
+##### R packages
+Allaire J (2023). _config: Manage Environment Specific Configuration Values_. R package version 0.3.2, <https://CRAN.R-project.org/package=config>.  
+Attali D, Sali A (2024). _shinycssloaders: Add Loading Animations to a 'shiny' Output While It's Recalculating_. R package version 1.1.0, <https://CRAN.R-project.org/package=shinycssloaders>.  
+Barrett T, Dowle M, Srinivasan A, Gorecki J, Chirico M, Hocking T, Schwendinger B (2024). _data.table: Extension of `data.frame`_. R package version 1.16.4, <https://CRAN.R-project.org/package=data.table>.  
+Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Xie Y, Allen J, McPherson J, Dipert A, Borges B (2024). _shiny: Web Application Framework for R_. R package version 1.10.0, <https://CRAN.R-project.org/package=shiny>.  
+Cheng J, Sievert C, Schloerke B, Chang W, Xie Y, Allen J (2024). _htmltools: Tools for HTML_. R package version 0.5.8.1, <https://CRAN.R-project.org/package=htmltools>.  
+Coene J (2022). _waiter: Loading Screen for 'Shiny'_. R package version 0.2.5, <https://CRAN.R-project.org/package=waiter>.  
+Csárdi G (2024). _crayon: Colored Terminal Output_. R package version 1.5.3, <https://CRAN.R-project.org/package=crayon>.  
+Fay C, Guyader V, Rochette S, Girard C (2024). _golem: A Framework for Robust Shiny Applications_. R package version 0.5.1, <https://CRAN.R-project.org/package=golem>.  
+Hester J, Bryan J (2024). _glue: Interpreted String Literals_. R package version 1.8.0, <https://CRAN.R-project.org/package=glue>.  
+Jochem C (2021). _sfarrow: Read/Write Simple Feature Objects ('sf') with 'Apache' 'Arrow'_. R package version 0.4.1, <https://CRAN.R-project.org/package=sfarrow>.  
+Makowski D, Lüdecke D, Patil I, Thériault R, Ben-Shachar M, Wiernik B (2023). “Automated Results Reporting as a Practical Tool to Improve Reproducibility and Methodological Best Practices Adoption.” _CRAN_. <https://easystats.github.io/report/>.  
+Neuwirth E (2022). _RColorBrewer: ColorBrewer Palettes_. R package version 1.1-3, <https://CRAN.R-project.org/package=RColorBrewer>.  
+Pebesma E, Bivand R (2023). _Spatial Data Science: With applications in R_. Chapman and Hall/CRC. doi:10.1201/9780429459016 <https://doi.org/10.1201/9780429459016>, <https://r-spatial.org/book/>.   
+Pebesma E (2018). “Simple Features for R: Standardized Support for Spatial Vector Data.” _The R Journal_, *10*(1), 439-446. doi:10.32614/RJ-2018-009 <https://doi.org/10.32614/RJ-2018-009>, <https://doi.org/10.32614/RJ-2018-009>.  
+Pedersen T, Crameri F (2023). _scico: Colour Palettes Based on the Scientific Colour-Maps_. R package version 1.5.0, <https://CRAN.R-project.org/package=scico>.  
+Perrier V, Meyer F, Granjon D (2024). _shinyWidgets: Custom Inputs Widgets for Shiny_. R package version 0.8.7, <https://CRAN.R-project.org/package=shinyWidgets>.  
+R Core Team (2024). _R: A Language and Environment for Statistical Computing_. R Foundation for Statistical Computing, Vienna, Austria. <https://www.R-project.org/>.  
+Richardson N, Cook I, Crane N, Dunnington D, François R, Keane J, Moldovan-Grünfeld D, Ooms J, Wujciak-Jens J, Apache Arrow (2024). _arrow: Integration to 'Apache' 'Arrow'_. R package version 18.1.0, <https://CRAN.R-project.org/package=arrow>.  
+Sievert C, Cheng J, Aden-Buie G (2024). _bslib: Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'_. R package version 0.8.0, <https://CRAN.R-project.org/package=bslib>.  
+Tang Y (2022). _shinyjqui: 'jQuery UI' Interactions and Effects for Shiny_. R package version 0.4.1, <https://CRAN.R-project.org/package=shinyjqui>.  
+Walker K (2024). _mapgl: Interactive Maps with 'Mapbox GL JS' and 'MapLibre GL JS'_. R package version 0.1.4.9000, commit d77c15d4602871d52c138c6d69b5a6dca2ce85f1, <https://github.com/walkerke/mapgl>.  
+Wickham H, Chang W, Hester J, Henry L (2024). _pkgload: Simulate Package Installation and Attach_. R package version 1.4.0, <https://CRAN.R-project.org/package=pkgload>.  
+Wickham H, François R, Henry L, Müller K, Vaughan D (2023). _dplyr: A Grammar of Data Manipulation_. R package version 1.1.4, <https://CRAN.R-project.org/package=dplyr>.  
+Xie Y, Allaire J, Horner J (2024). _markdown: Render Markdown with 'commonmark'_. R package version 1.13, <https://CRAN.R-project.org/package=markdown>.  
+Xie Y, Cheng J, Tan X (2024). _DT: A Wrapper of the JavaScript Library 'DataTables'_. R package version 0.33, <https://CRAN.R-project.org/package=DT>.  
+

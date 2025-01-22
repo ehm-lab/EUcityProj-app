@@ -21,7 +21,7 @@ mod_map_ui <- function(id) {
       card_body(
         class = "p-0",
         shinycssloaders::withSpinner(
-          maplibreOutput(ns("bmap"), height = "75vh"), type = 4 # map output with loading spinner
+          maplibreOutput(ns("bmap"), height = "70vh"), type = 4 # map output with loading spinner
         )
       )
     )
@@ -42,8 +42,13 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
     output$bmap <- renderMaplibre({
       maplibre(
         style = carto_style("voyager"),
+        # allow full mapview
         center = c(10, 49.7),
         zoom = 3
+      #   # limit map view
+      #   ,maxBounds=list(
+      #     # southwest - northeast corners
+      #     c(-20, 33.88), c(36.1, 66.5))
       )
     })
 
@@ -139,7 +144,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
             values = plabs,
             colors = pal,
             position = "top-right"
-          )
+          ) # |> fit_bounds(bbox = c(c(-20, 33.88), c(36.1, 66.5)))
       } else {
         maplibre_proxy("bmap") %>%
           clear_layer("fill_polys") %>%
@@ -168,7 +173,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
             values = plabs,
             colors = pal,
             position = "top-right"
-          )
+          )# |> fit_bounds(bbox = c(c(-20, 33.88), c(36.1, 66.5)))
       }
     }) %>% bindEvent(mapdata(), outc())
 
