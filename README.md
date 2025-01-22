@@ -12,7 +12,8 @@ Access the full study results at:
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14004322.svg)](https://doi.org/10.5281/zenodo.14004322)
 
 
-Full reference upcoming
+Full reference upcoming  
+https://www.nature.com/articles/s41591-024-03452-2
 
 
 On runnning the app locally:
