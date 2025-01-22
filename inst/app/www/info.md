@@ -25,7 +25,7 @@ Some technical terms related to the outcomes and scenarios are defined below.
 - **Excess deaths:** The number of deaths attributable to temperature, calculated by comparing observed conditions to optimal temperature ranges.
 - **Attributable fraction (%):** The percentage of total deaths that can be attributed to temperature.
 - **Rate (x10⁵) :** The mortality burden normalized to the population, typically expressed as deaths per 100,000 person-years.
-- **Cumulative excess deaths:** The total number of temperature-attributed deaths accumulated over a specific period, until the selected year.
+- **Cumulative excess deaths:** The total number of temperature-attributed deaths accumulated over a specific period, including the one selected.
 
 ##### Scenario Components
 
