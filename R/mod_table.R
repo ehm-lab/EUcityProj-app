@@ -52,6 +52,19 @@ mod_table_server <- function(id, tbdata, scelab) {
     output$table <- renderDT({
       req(tbdata())
 
+      if (any(tbdata() == "NoData")) {
+
+        showModal(
+          modalDialog(
+            title = "No data",
+            "Projected values for this scenario are unavailable. Please try a different selection or check the Information tab.",
+            easyClose = TRUE,
+            footer = NULL
+          )
+        )
+        return()
+      }
+
       dtf <- data.table::copy(tbdata()$dt)
 
       # Estimate (lower to higher) formatting

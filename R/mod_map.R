@@ -64,7 +64,7 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
         showModal(
           modalDialog(
             title = "No data",
-            "Projected values for this scenario are unavailable. Please try a different selection or check the Help and Research pages for more information.",
+            "Projected values for this scenario are unavailable. Please try a different selection or check the Information tab.",
             easyClose = TRUE,
             footer = NULL
           )

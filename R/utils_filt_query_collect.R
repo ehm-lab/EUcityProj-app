@@ -24,6 +24,12 @@ utils_filt_query_collect <- function(ds, lev_pe, perio, leve, adap, agegrou, ss,
   if (fortable) {
 
     dtrows <- nrow(ds)
+
+    if (dtrows == 0) {
+
+      return("NoData")
+    }
+
     chunk_size <- min(dtrows, 2000000)
     n_chunks <- ceiling(dtrows / chunk_size)
 
