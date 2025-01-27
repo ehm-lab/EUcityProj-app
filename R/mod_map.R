@@ -43,13 +43,14 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
       maplibre(
         style = carto_style("voyager"),
         # allow full mapview
-        center = c(10, 49.7),
+        center = c(10.5, 40),
         zoom = 3
-      #   # limit map view
-      #   ,maxBounds=list(
-      #     # southwest - northeast corners
-      #     c(-20, 33.88), c(36.1, 66.5))
-      )
+        # limit map view
+        ,maxBounds=list(
+          # southwest - northeast corners
+          c(-20, 33.88), c(36.1, 66.5))
+      ) %>%
+        set_view(center = c(10.5, 45), zoom= 0)
     })
 
     observe({
@@ -144,7 +145,8 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
             values = plabs,
             colors = pal,
             position = "top-right"
-          ) # |> fit_bounds(bbox = c(c(-20, 33.88), c(36.1, 66.5)))
+          ) %>%
+          set_view(center = c(10.5, 45), zoom= 0)
       } else {
         maplibre_proxy("bmap") %>%
           clear_layer("fill_polys") %>%
@@ -173,7 +175,8 @@ mod_map_server <- function(id, mapdata, spat, outc, scelab, opacity) {
             values = plabs,
             colors = pal,
             position = "top-right"
-          )# |> fit_bounds(bbox = c(c(-20, 33.88), c(36.1, 66.5)))
+          ) %>%
+          set_view(center = c(10.5, 45), zoom= 0)
       }
     }) %>% bindEvent(mapdata(), outc())
 

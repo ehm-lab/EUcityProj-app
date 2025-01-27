@@ -35,8 +35,8 @@ mod_map_inputs_ui <- function(id) {
         sliderTextInput(
           ns("period"),
           NULL,
-          choices = period_ov,
-          selected = period_ov[4],
+          choices = names(period_ov),
+          selected = names(period_ov)[1],
           animate = FALSE,
           grid = TRUE
         )
@@ -88,7 +88,7 @@ mod_map_inputs_ui <- function(id) {
         ns("ssp"),
         "SSP:",
         ssp_ov,
-        ssp_ov[2],
+        ssp_ov[1],
         size = "xs",
         justified = TRUE
       ),
@@ -135,15 +135,26 @@ mod_map_inputs_server <- function(id) {
       init_selected = level_ov[1]
     )
 
+    # enables named choices for the "period" slider
+    rw_period <- allow_named_choices(
+      inputId = "period",
+      update_function = updateSliderTextInput,
+      input = input,
+      session = session,
+      init_choices = period_ov,
+      init_selected = period_ov[1]
+    )
+
     # sets default values for inputs
     observe({
       updateSelectizeInput(session, "lev_per", selected = "Warming level")
       updateSelectizeInput(session, "area", selected = "City")
       updateSliderTextInput(session, "level", selected = names(level_ov)[1])
+      updateSliderTextInput(session,"period", selected = names(period_ov)[1])
       updateRadioGroupButtons(session, "range", selected = range_ov[2])
       updateSelectizeInput(session, "agegroup", selected = "all")
       updateRadioGroupButtons(session, "ssp", selected = ssp_ov[1])
-      updateRadioGroupButtons(session, "sc", selected = sc_ov[3])
+      updateRadioGroupButtons(session, "sc", selected = sc_ov[1])
       updateSelectizeInput(session, "outc", selected = "cuman")
     })
 
@@ -152,7 +163,7 @@ mod_map_inputs_server <- function(id) {
       list(
         area = reactive(input$area),
         lev_per = reactive(input$lev_per),
-        period = reactive(input$period),
+        period = rw_period$read,
         level = rw_level$read,
         range = reactive(input$range),
         adapt = reactive(input$adapt),

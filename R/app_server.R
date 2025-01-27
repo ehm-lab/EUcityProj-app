@@ -19,6 +19,7 @@ app_server <- function(input, output, session) {
   map_data <- reactive({
     req(inputs_a$area())
     ds <- utils_connect_arrow(inputs_a$lev_per(), inputs_a$area())
+
     utils_filt_query_collect(
       ds,
       lev_pe  = inputs_a$lev_per(),

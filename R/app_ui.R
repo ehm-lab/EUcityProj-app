@@ -103,6 +103,6 @@ golem_add_external_resources <- function() {
       app_title = "vistemphip"
     ),
     # add this line to include the CSS - somehow automatically applied
-    # tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+    tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
   )
 }
