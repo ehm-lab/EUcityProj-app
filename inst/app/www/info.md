@@ -50,7 +50,10 @@ The researchers allow open-access to the full set of detailed results and more r
 
 - **Data repository:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14004322.svg)](https://doi.org/10.5281/zenodo.14004322)  
 - **Lab website:** [https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab](https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab)
-- **Paper:** upcoming [![DOI](https://www.nature.com/articles/s41591-024-03452-2)](https://www.nature.com/articles/s41591-024-03452-2)
+- **Paper:** [![Static Badge](https://img.shields.io/badge/Nat_Med_(2025)-https://doi.org/10.1038/s41591--024--03452--2-firebrick?link=https://doi.org/10.1038/s41591-024-03452-2)](https://doi.org/10.1038/s41591-024-03452-2)
+
+> Masselot, P., Mistry, M.N., Rao, S. *et al.* Estimating future heat-related and cold-related mortality under climate change, demographic and adaptation scenarios in 854 European cities. *Nat Med (2025).* https://doi.org/10.1038/s41591-024-03452-2
+
 
 ---
 

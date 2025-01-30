@@ -377,11 +377,11 @@ temperatures.</p>
 </div>
 <div id="app" class="section level4">
 <h4>App</h4>
-<p>This app lets you explore the projection results using an interactive
-map and table. The map shows how projected mortality outcomes vary
-across different locations. You can look at the results by global
-warming levels or time periods, and zoom in on cities, countries, or
-regions.</p>
+<p>This app lets you explore the study results using an interactive map
+and table. The map shows how projected mortality outcomes vary across
+different locations. You can look at the results by global warming
+levels or five-year time periods (with the year selected being the start
+of the period), and zoom in on cities, countries, or regions.</p>
 <p>The study analyzed the effects of cold and heat separately, as well
 as their distinct impacts on different age groups. The interactive
 controls let you view any combination of these cases. You can also use
@@ -405,8 +405,8 @@ deaths that can be attributed to temperature.</li>
 the population, typically expressed as deaths per 100,000
 person-years.</li>
 <li><strong>Cumulative excess deaths:</strong> The total number of
-temperature-attributed deaths accumulated over a specific period, until
-the selected year.</li>
+temperature-attributed deaths accumulated over a specific period,
+including the one selected.</li>
 </ul>
 </div>
 <div id="scenario-components" class="section level5">
@@ -441,18 +441,95 @@ changes.</li>
 <div id="full-projections-access" class="section level4">
 <h4>Full Projections Access</h4>
 <p>The researchers allow open-access to the full set of detailed results
-at five-year intervals and more research artifacts through the
-repository linked below.</p>
+and more research artifacts through the repository linked below.</p>
 <hr />
 </div>
 <div id="links" class="section level4">
 <h4>Links</h4>
 <ul>
-<li><strong>Data repository:</strong> <a href="https://doi.org/10.5281/zenodo.14004322"><img role="img" aria-label="DOI" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgICAgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bWFzayBpZD0iYSIgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxOTAuODQzNzUiIGhlaWdodD0iMjAiIHJ4PSIzIgogICAgICAgICAgICBmaWxsPSIjZmZmIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxnIG1hc2s9InVybCgjYSkiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxLjM3NXYyMEgweiIgLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iIzAwN2VjNiIKICAgICAgICAgICAgZD0iTTMxLjM3NSAwaDE1OS40Njg3NXYyMEgzMS4zNzV6IgogICAgICAgICAgICAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE5MC44NDM3NXYyMEgweiIgLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLAogICAgICAgIFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIKICAgICAgICAgICAgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNCI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxMTAuNjA5Mzc1IgogICAgICAgICAgICB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICAxMC41MjgxL3plbm9kby4xNDAwNDMyMgogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjExMC42MDkzNzUiIHk9IjE0Ij4KICAgICAgICAgICAgICAgIDEwLjUyODEvemVub2RvLjE0MDA0MzIyCiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICA8L2c+CiAgICA8L3N2Zz4=" alt="DOI" /></a><br />
+<li><strong>Data repository:</strong> <a href="https://doi.org/10.5281/zenodo.14004322"><img src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgICAgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJiIiB4Mj0iMCIgeTI9IjEwMCUiPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bWFzayBpZD0iYSIgd2lkdGg9IjE5MC44NDM3NSIgaGVpZ2h0PSIyMCI+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxOTAuODQzNzUiIGhlaWdodD0iMjAiIHJ4PSIzIgogICAgICAgICAgICBmaWxsPSIjZmZmIi8+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxnIG1hc2s9InVybCgjYSkiPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDMxLjM3NXYyMEgweiIgLz4KICAgICAgICAgICAgPHBhdGggZmlsbD0iIzAwN2VjNiIKICAgICAgICAgICAgZD0iTTMxLjM3NSAwaDE1OS40Njg3NXYyMEgzMS4zNzV6IgogICAgICAgICAgICAvPgogICAgICAgICAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE5MC44NDM3NXYyMEgweiIgLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLAogICAgICAgIFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNSIgZmlsbD0iIzAxMDEwMSIKICAgICAgICAgICAgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxNi4xODc1IiB5PSIxNCI+CiAgICAgICAgICAgICAgICBET0kKICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCB4PSIxMTAuNjA5Mzc1IgogICAgICAgICAgICB5PSIxNSIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgICAgICAgICAxMC41MjgxL3plbm9kby4xNDAwNDMyMgogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IHg9IjExMC42MDkzNzUiIHk9IjE0Ij4KICAgICAgICAgICAgICAgIDEwLjUyODEvemVub2RvLjE0MDA0MzIyCiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICA8L2c+CiAgICA8L3N2Zz4=" alt="DOI" /></a><br />
 </li>
-<li><strong>Lab Website:</strong> <a href="https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab">https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab</a></li>
-<li><strong>Paper:</strong> [upcoming]</li>
+<li><strong>Lab website:</strong> <a href="https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab">https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab</a></li>
+<li><strong>Paper:</strong> <a href="https://doi.org/10.1038/s41591-024-03452-2"><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzY0IiBoZWlnaHQ9IjIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik5hdCBNZWQgKDIwMjUpOiBodHRwczovL2RvaS5vcmcvMTAuMTAzOC9zNDE1OTEtMDI0LTAzNDUyLTIiPjx0aXRsZT5OYXQgTWVkICgyMDI1KTogaHR0cHM6Ly9kb2kub3JnLzEwLjEwMzgvczQxNTkxLTAyNC0wMzQ1Mi0yPC90aXRsZT48YSB0YXJnZXQ9Il9ibGFuayIgeGxpbms6aHJlZj0iaHR0cHM6Ly9kb2kub3JnLzEwLjEwMzgvczQxNTkxLTAyNC0wMzQ1Mi0yIj48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIzNjQiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI5NyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9Ijk3IiB3aWR0aD0iMjY3IiBoZWlnaHQ9IjIwIiBmaWxsPSJmaXJlYnJpY2siLz48cmVjdCB3aWR0aD0iMzY0IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjQ5NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iODcwIj5OYXQgTWVkICgyMDI1KTwvdGV4dD48dGV4dCB4PSI0OTUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9Ijg3MCI+TmF0IE1lZCAoMjAyNSk8L3RleHQ+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjIyOTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjI1NzAiPmh0dHBzOi8vZG9pLm9yZy8xMC4xMDM4L3M0MTU5MS0wMjQtMDM0NTItMjwvdGV4dD48dGV4dCB4PSIyMjk1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIyNTcwIj5odHRwczovL2RvaS5vcmcvMTAuMTAzOC9zNDE1OTEtMDI0LTAzNDUyLTI8L3RleHQ+PC9nPjwvYT48L3N2Zz4=" alt="Static Badge" /></a></li>
 </ul>
+<blockquote>
+<p>Masselot, P., Mistry, M.N., Rao, S. <em>et al.</em> Estimating future
+heat-related and cold-related mortality under climate change,
+demographic and adaptation scenarios in 854 European cities. <em>Nat Med
+(2025).</em> <a href="https://doi.org/10.1038/s41591-024-03452-2" class="uri">https://doi.org/10.1038/s41591-024-03452-2</a></p>
+</blockquote>
+<hr />
+</div>
+<div id="references" class="section level4">
+<h4>References</h4>
+<div id="basemap-tiles" class="section level5">
+<h5>Basemap tiles</h5>
+<p>CARTO (2025). CartoDB/basemap-styles. <a href="https://github.com/CartoDB/basemap-styles" class="uri">https://github.com/CartoDB/basemap-styles</a>.</p>
+</div>
+<div id="r-packages" class="section level5">
+<h5>R packages</h5>
+<p>Allaire J (2023). <em>config: Manage Environment Specific
+Configuration Values</em>. R package version 0.3.2, <a href="https://CRAN.R-project.org/package=config" class="uri">https://CRAN.R-project.org/package=config</a>.<br />
+Attali D, Sali A (2024). <em>shinycssloaders: Add Loading Animations to
+a ‘shiny’ Output While It’s Recalculating</em>. R package version 1.1.0,
+<a href="https://CRAN.R-project.org/package=shinycssloaders" class="uri">https://CRAN.R-project.org/package=shinycssloaders</a>.<br />
+Barrett T, Dowle M, Srinivasan A, Gorecki J, Chirico M, Hocking T,
+Schwendinger B (2024). <em>data.table: Extension of
+<code>data.frame</code></em>. R package version 1.16.4, <a href="https://CRAN.R-project.org/package=data.table" class="uri">https://CRAN.R-project.org/package=data.table</a>.<br />
+Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Xie Y, Allen J,
+McPherson J, Dipert A, Borges B (2024). <em>shiny: Web Application
+Framework for R</em>. R package version 1.10.0, <a href="https://CRAN.R-project.org/package=shiny" class="uri">https://CRAN.R-project.org/package=shiny</a>.<br />
+Cheng J, Sievert C, Schloerke B, Chang W, Xie Y, Allen J (2024).
+<em>htmltools: Tools for HTML</em>. R package version 0.5.8.1, <a href="https://CRAN.R-project.org/package=htmltools" class="uri">https://CRAN.R-project.org/package=htmltools</a>.<br />
+Coene J (2022). <em>waiter: Loading Screen for ‘Shiny’</em>. R package
+version 0.2.5, <a href="https://CRAN.R-project.org/package=waiter" class="uri">https://CRAN.R-project.org/package=waiter</a>.<br />
+Csárdi G (2024). <em>crayon: Colored Terminal Output</em>. R package
+version 1.5.3, <a href="https://CRAN.R-project.org/package=crayon" class="uri">https://CRAN.R-project.org/package=crayon</a>.<br />
+Fay C, Guyader V, Rochette S, Girard C (2024). <em>golem: A Framework
+for Robust Shiny Applications</em>. R package version 0.5.1, <a href="https://CRAN.R-project.org/package=golem" class="uri">https://CRAN.R-project.org/package=golem</a>.<br />
+Hester J, Bryan J (2024). <em>glue: Interpreted String Literals</em>. R
+package version 1.8.0, <a href="https://CRAN.R-project.org/package=glue" class="uri">https://CRAN.R-project.org/package=glue</a>.<br />
+Jochem C (2021). <em>sfarrow: Read/Write Simple Feature Objects (‘sf’)
+with ‘Apache’ ‘Arrow’</em>. R package version 0.4.1, <a href="https://CRAN.R-project.org/package=sfarrow" class="uri">https://CRAN.R-project.org/package=sfarrow</a>.<br />
+Makowski D, Lüdecke D, Patil I, Thériault R, Ben-Shachar M, Wiernik B
+(2023). “Automated Results Reporting as a Practical Tool to Improve
+Reproducibility and Methodological Best Practices Adoption.”
+<em>CRAN</em>. <a href="https://easystats.github.io/report/" class="uri">https://easystats.github.io/report/</a>.<br />
+Neuwirth E (2022). <em>RColorBrewer: ColorBrewer Palettes</em>. R
+package version 1.1-3, <a href="https://CRAN.R-project.org/package=RColorBrewer" class="uri">https://CRAN.R-project.org/package=RColorBrewer</a>.<br />
+Pebesma E, Bivand R (2023). <em>Spatial Data Science: With applications
+in R</em>. Chapman and Hall/CRC. <a href="doi:10.1201/9780429459016" class="uri">doi:10.1201/9780429459016</a> <a href="https://doi.org/10.1201/9780429459016" class="uri">https://doi.org/10.1201/9780429459016</a>, <a href="https://r-spatial.org/book/" class="uri">https://r-spatial.org/book/</a>.<br />
+Pebesma E (2018). “Simple Features for R: Standardized Support for
+Spatial Vector Data.” <em>The R Journal</em>, <em>10</em>(1), 439-446.
+<a href="doi:10.32614/RJ-2018-009" class="uri">doi:10.32614/RJ-2018-009</a> <a href="https://doi.org/10.32614/RJ-2018-009" class="uri">https://doi.org/10.32614/RJ-2018-009</a>, <a href="https://doi.org/10.32614/RJ-2018-009" class="uri">https://doi.org/10.32614/RJ-2018-009</a>.<br />
+Pedersen T, Crameri F (2023). <em>scico: Colour Palettes Based on the
+Scientific Colour-Maps</em>. R package version 1.5.0, <a href="https://CRAN.R-project.org/package=scico" class="uri">https://CRAN.R-project.org/package=scico</a>.<br />
+Perrier V, Meyer F, Granjon D (2024). <em>shinyWidgets: Custom Inputs
+Widgets for Shiny</em>. R package version 0.8.7, <a href="https://CRAN.R-project.org/package=shinyWidgets" class="uri">https://CRAN.R-project.org/package=shinyWidgets</a>.<br />
+R Core Team (2024). <em>R: A Language and Environment for Statistical
+Computing</em>. R Foundation for Statistical Computing, Vienna, Austria.
+<a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.<br />
+Richardson N, Cook I, Crane N, Dunnington D, François R, Keane J,
+Moldovan-Grünfeld D, Ooms J, Wujciak-Jens J, Apache Arrow (2024).
+<em>arrow: Integration to ‘Apache’ ‘Arrow’</em>. R package version
+18.1.0, <a href="https://CRAN.R-project.org/package=arrow" class="uri">https://CRAN.R-project.org/package=arrow</a>.<br />
+Sievert C, Cheng J, Aden-Buie G (2024). <em>bslib: Custom ‘Bootstrap’
+‘Sass’ Themes for ‘shiny’ and ‘rmarkdown’</em>. R package version 0.8.0,
+<a href="https://CRAN.R-project.org/package=bslib" class="uri">https://CRAN.R-project.org/package=bslib</a>.<br />
+Tang Y (2022). <em>shinyjqui: ‘jQuery UI’ Interactions and Effects for
+Shiny</em>. R package version 0.4.1, <a href="https://CRAN.R-project.org/package=shinyjqui" class="uri">https://CRAN.R-project.org/package=shinyjqui</a>.<br />
+Walker K (2024). <em>mapgl: Interactive Maps with ‘Mapbox GL JS’ and
+‘MapLibre GL JS’</em>. R package version 0.1.4.9000, commit
+d77c15d4602871d52c138c6d69b5a6dca2ce85f1, <a href="https://github.com/walkerke/mapgl" class="uri">https://github.com/walkerke/mapgl</a>.<br />
+Wickham H, Chang W, Hester J, Henry L (2024). <em>pkgload: Simulate
+Package Installation and Attach</em>. R package version 1.4.0, <a href="https://CRAN.R-project.org/package=pkgload" class="uri">https://CRAN.R-project.org/package=pkgload</a>.<br />
+Wickham H, François R, Henry L, Müller K, Vaughan D (2023). <em>dplyr: A
+Grammar of Data Manipulation</em>. R package version 1.1.4, <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.<br />
+Xie Y, Allaire J, Horner J (2024). <em>markdown: Render Markdown with
+‘commonmark’</em>. R package version 1.13, <a href="https://CRAN.R-project.org/package=markdown" class="uri">https://CRAN.R-project.org/package=markdown</a>.<br />
+Xie Y, Cheng J, Tan X (2024). <em>DT: A Wrapper of the JavaScript
+Library ‘DataTables’</em>. R package version 0.33, <a href="https://CRAN.R-project.org/package=DT" class="uri">https://CRAN.R-project.org/package=DT</a>.</p>
+</div>
 </div>
 
 

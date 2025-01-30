@@ -19,8 +19,8 @@
 #' @import markdown
 #' @noRd
 #'
-link_satrm <- tags$a(shiny::icon("temperature-high"), "Article", href = "https://www.nature.com/articles/s41591-024-03452-2", target = "_blank")
-link_ehm <- tags$a(shiny::icon("people-group"), "EHM-Lab", href = "https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab", target = "_blank")
+link_satrm <- tags$a(shiny::icon("temperature-high"), "Article", href = "https://doi.org/10.1038/s41591-024-03452-2", target = "_blank")
+link_ehm <- tags$a(shiny::icon("people-group"), "EHM-Lab", href = "https://www.lshtm.ac.uk/ehm-lab", target = "_blank")
 link_ehmres <- tags$a(shiny::icon("magnifying-glass"), "EHM-Research", href= "https://www.lshtm.ac.uk/research/centres-projects-groups/ehm-lab#research", target = "_blank")
 
 app_ui <- function(request) {
@@ -100,7 +100,7 @@ golem_add_external_resources <- function() {
     favicon(),
     bundle_resources(
       path = app_sys("app/www"),
-      app_title = "vistemphip"
+      app_title = "EUcityProj-app"
     ),
     # add this line to include the CSS - somehow automatically applied
     tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
