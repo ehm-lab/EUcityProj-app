@@ -1,4 +1,4 @@
-# Shiny-app to visualise the results of Masselot et al. (2024)
+# Shiny-app to visualise the results of Masselot et al. (2025)
 
 This web-app lets you explore the projection results using an interactive map and table. The map shows how projected mortality outcomes vary across different locations. You can look at the results by global warming levels or time periods, and zoom in on cities, countries, or regions.
 
